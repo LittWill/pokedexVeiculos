@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { IVeiculo } from '../interfaces/IVeiculo';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class VeiculosService {
 
   constructor(private http: HttpClient) { }
 
-  listar(): Observable<any[]>{
-    return this.http.get<any[]>('https://pokedex-veiculos.herokuapp.com/veiculos');
+  listar(): Observable<IVeiculo[]>{
+    return this.http.get<IVeiculo[]>('https://pokedex-veiculos.herokuapp.com/veiculos');
   }
 }

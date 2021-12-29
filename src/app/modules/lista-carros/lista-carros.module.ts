@@ -2,23 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
-import { NavegacaoRoutingModule } from './navegacao-routing.module';
-import { HomeComponent } from './components/home/home.component';
+import { ListaCarrosRoutingModule } from './lista-carros-routing.module';
 import { VeiculosService } from 'src/app/services/veiculos.service';
+import { ListaCarrosComponent } from './components/lista-carros/lista-carros.component';
 
 
 @NgModule({
   declarations: [
-    HomeComponent
+    ListaCarrosComponent
   ],
   imports: [
     CommonModule,
     HttpClientModule,
-    NavegacaoRoutingModule
+    ListaCarrosRoutingModule
   ],
   providers: [VeiculosService],
-  exports: [
-    HomeComponent,
-  ]
 })
-export class NavegacaoModule { }
+export class ListaCarrosModule { }

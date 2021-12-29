@@ -9,8 +9,12 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./modules/navegacao/navegacao.module').then(m => m.NavegacaoModule),
-  }
+    loadChildren: () => import('./modules/home/home.module').then(m => m.NavegacaoModule),
+  },
+  {
+    path: 'carros',
+    loadChildren: () => import('./modules/lista-carros/lista-carros.module').then(m => m.ListaCarrosModule),
+  },
 ];
 
 @NgModule({

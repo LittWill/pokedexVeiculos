@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IVeiculo } from 'src/app/interfaces/IVeiculo';
 import { VeiculosService } from 'src/app/services/veiculos.service';
 
 @Component({
@@ -7,12 +8,9 @@ import { VeiculosService } from 'src/app/services/veiculos.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  listaVeiculos: any[] = [];
 
-  constructor(private veiculosService: VeiculosService) { }
+  constructor() { }
 
-  ngOnInit(): void {
-    this.veiculosService.listar().subscribe(veiculos => this.listaVeiculos = veiculos);
-  }
+  ngOnInit(): void { }
 
 }
