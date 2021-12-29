@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
 import { NavegacaoRoutingModule } from './navegacao-routing.module';
-import { HomeComponent } from './componentes/home/home.component';
+import { HomeComponent } from './components/home/home.component';
 import { VeiculosService } from 'src/app/services/veiculos.service';
 
 

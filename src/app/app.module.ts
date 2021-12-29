@@ -13,7 +13,6 @@ import { VeiculosService } from './services/veiculos.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NavegacaoModule
   ],
   providers: [VeiculosService],
   bootstrap: [AppComponent]
