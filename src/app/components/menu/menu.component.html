@@ -1,4 +1,4 @@
-<nav class="menu">
+<!-- <nav class="menu">
     <ul>
       <li>
         <a [routerLink]="['/']">Home</a>
@@ -7,4 +7,9 @@
         <a [routerLink]="['carros']">Carros</a>
       </li>
     </ul>
-</nav>
+</nav> -->
+<button mat-button [matMenuTriggerFor]="menu">Menu</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item [routerLink]="['/']">Home</button>
+  <button mat-menu-item [routerLink]="['carros']">Carros</button>
+</mat-menu>
