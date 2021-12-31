@@ -8,8 +8,11 @@
       </li>
     </ul>
 </nav> -->
-<button mat-button [matMenuTriggerFor]="menu">Menu</button>
-<mat-menu #menu="matMenu">
-  <button mat-menu-item [routerLink]="['/']">Home</button>
-  <button mat-menu-item [routerLink]="['carros']">Carros</button>
-</mat-menu>
+<nav class="menu">
+  <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item [routerLink]="['/']">Home</button>
+    <button mat-menu-item [routerLink]="['carros']">Carros</button>
+  </mat-menu>
+</nav>
+

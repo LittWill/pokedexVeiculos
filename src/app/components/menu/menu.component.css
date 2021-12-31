@@ -1,18 +1,5 @@
-/* .menu {
+.menu {
   background-color: black;
   color: aliceblue;
   padding: 10px 0 10px 0;
 }
-
-.menu ul {
-  list-style-type: none;
-  display: flex;
-  justify-content: space-between;
-  width: 150px;
-  margin: 0;
-}
-
-.menu a {
-  color: inherit;
-  text-decoration: none;
-} */
