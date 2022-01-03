@@ -17,6 +17,10 @@ export class ListaAnunciosComponent implements OnInit {
       this.listaAnuncios = anuncios;
       console.log(this.listaAnuncios);
     })
-  }
 
+    this.anunciosService.listar().subscribe(anuncios => {
+      this.listaAnuncios = anuncios.concat(anuncios);
+      console.log(this.listaAnuncios);
+    })
+  }
 }
