@@ -2,8 +2,13 @@
   background-color: black;
   color: aliceblue;
   text-align: center;
+  padding: 10px;
   position: fixed;
   bottom: 0;
   right: 0;
   left: 0;
+}
+
+.footer > p {
+  margin: 0;
 }
