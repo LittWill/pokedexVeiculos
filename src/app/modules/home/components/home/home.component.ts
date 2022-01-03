@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { IVeiculo } from 'src/app/interfaces/IVeiculo';
-import { VeiculosService } from 'src/app/services/veiculos.service';
 
 @Component({
   selector: 'home',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { IVeiculo } from 'src/app/interfaces/IVeiculo';
-import { VeiculosService } from 'src/app/services/veiculos.service';
+import { CarrosService } from 'src/app/services/carros.service';
 
 @Component({
   selector: 'app-lista-carros',
@@ -11,7 +11,7 @@ import { VeiculosService } from 'src/app/services/veiculos.service';
 export class ListaCarrosComponent implements OnInit {
   listaVeiculos: IVeiculo[] = [];
 
-  constructor(private veiculosService: VeiculosService) { }
+  constructor(private veiculosService: CarrosService) { }
 
   ngOnInit(): void {
     this.veiculosService.listar().subscribe(veiculos =>{

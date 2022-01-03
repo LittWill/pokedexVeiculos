@@ -13,7 +13,11 @@ const routes: Routes = [
   },
   {
     path: 'carros',
-    loadChildren: () => import('./modules/lista-carros/lista-carros.module').then(m => m.ListaCarrosModule),
+    loadChildren: () => import('./modules/carros/carros.module').then(m => m.ListaCarrosModule),
+  },
+  {
+    path: 'anuncios',
+    loadChildren: () => import('./modules/anuncios/anuncios.module').then(m => m.AnunciosModule),
   },
 ];
 

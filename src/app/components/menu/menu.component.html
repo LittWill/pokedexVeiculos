@@ -1,18 +1,9 @@
-<!-- <nav class="menu">
-    <ul>
-      <li>
-        <a [routerLink]="['/']">Home</a>
-      </li>
-      <li>
-        <a [routerLink]="['carros']">Carros</a>
-      </li>
-    </ul>
-</nav> -->
 <nav class="menu">
   <button mat-button [matMenuTriggerFor]="menu">Menu</button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item [routerLink]="['/']">Home</button>
     <button mat-menu-item [routerLink]="['carros']">Carros</button>
+    <button mat-menu-item [routerLink]="['anuncios']">Anuncios</button>
   </mat-menu>
 </nav>
 

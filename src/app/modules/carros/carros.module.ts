@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
-import { ListaCarrosRoutingModule } from './lista-carros-routing.module';
-import { VeiculosService } from 'src/app/services/veiculos.service';
+import { ListaCarrosRoutingModule } from './carros-routing.module';
+import { CarrosService } from 'src/app/services/carros.service';
 import { ListaCarrosComponent } from './components/lista-carros/lista-carros.component';
 
 
@@ -16,6 +16,6 @@ import { ListaCarrosComponent } from './components/lista-carros/lista-carros.com
     HttpClientModule,
     ListaCarrosRoutingModule
   ],
-  providers: [VeiculosService],
+  providers: [CarrosService],
 })
 export class ListaCarrosModule { }
