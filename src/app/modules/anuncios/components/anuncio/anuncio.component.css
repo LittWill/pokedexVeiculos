@@ -2,3 +2,7 @@
   margin: 5px;
   max-width: 300px;
 }
+
+.imagem {
+  min-height: 250px;
+}
