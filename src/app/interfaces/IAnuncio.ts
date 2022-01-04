@@ -5,7 +5,15 @@ export interface IAnuncio {
   veiculo: IVeiculo,
   descricao: string,
   valor: number,
-  perguntas: string[],
+  perguntas: {
+    data: Date,
+    id: number,
+    resposta: {
+      data: Date,
+      texto: string
+    },
+    texto: string
+  },
   status: string,
   data: Date
 }

@@ -8,12 +8,17 @@ import { AnunciosRoutingModule } from './anuncios-routing.module';
 import { ListaAnunciosComponent } from './components/lista-anuncios/lista-anuncios.component';
 import { AnunciosService } from 'src/app/services/anuncios.service';
 import { AnuncioComponent } from './components/anuncio/anuncio.component';
+import { DetalhesComponent } from './components/detalhes/detalhes.component';
+import { AnunciosComponent } from './anuncios.component';
+
 
 
 @NgModule({
   declarations: [
     ListaAnunciosComponent,
-    AnuncioComponent
+    AnuncioComponent,
+    DetalhesComponent,
+    AnunciosComponent
   ],
   imports: [
     CommonModule,
