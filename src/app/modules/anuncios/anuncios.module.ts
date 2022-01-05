@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import {MatCardModule} from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 
 import { AnunciosRoutingModule } from './anuncios-routing.module';
 import { ListaAnunciosComponent } from './components/lista-anuncios/lista-anuncios.component';
-import { AnunciosService } from 'src/app/services/anuncios.service';
 import { AnuncioComponent } from './components/anuncio/anuncio.component';
 import { DetalhesComponent } from './components/detalhes/detalhes.component';
 import { AnunciosComponent } from './anuncios.component';
@@ -22,11 +20,9 @@ import { AnunciosComponent } from './anuncios.component';
   ],
   imports: [
     CommonModule,
-    HttpClientModule,
     MatCardModule,
     MatButtonModule,
-    AnunciosRoutingModule
+    AnunciosRoutingModule,
   ],
-  providers: [AnunciosService],
 })
 export class AnunciosModule { }

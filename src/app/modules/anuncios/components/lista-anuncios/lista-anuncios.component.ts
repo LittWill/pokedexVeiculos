@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IAnuncio } from 'src/app/interfaces/IAnuncio';
 import { AnunciosService } from 'src/app/services/anuncios.service';
+import { LoaderService } from 'src/app/services/loader.service';
 
 @Component({
   selector: 'app-lista-anuncios',
@@ -10,17 +11,20 @@ import { AnunciosService } from 'src/app/services/anuncios.service';
 export class ListaAnunciosComponent implements OnInit {
   listaAnuncios: IAnuncio[] = [];
 
-  constructor(private anunciosService: AnunciosService) { }
+  constructor(
+    private anunciosService: AnunciosService,
+    private loaderService: LoaderService
+  ) { }
 
   ngOnInit(): void {
+    this.loaderService.open();
     this.anunciosService.listar().subscribe(anuncios => {
       this.listaAnuncios = anuncios;
-      console.log(this.listaAnuncios);
     })
 
     this.anunciosService.listar().subscribe(anuncios => {
       this.listaAnuncios = anuncios.concat(anuncios);
-      console.log(this.listaAnuncios);
     })
+    this.loaderService.close();
   }
 }
