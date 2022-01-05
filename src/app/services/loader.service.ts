@@ -5,18 +5,18 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class LoaderService {
-  isLoading = new BehaviorSubject(false);
+  isLoading$ = new BehaviorSubject(false);
   
   constructor() { }
   
   open(): void {
-    this.isLoading.next(true);
+    this.isLoading$.next(true);
     this.esconderConteudo();
   }
 
   close(): void {
     setTimeout(() => {
-      this.isLoading.next(false);
+      this.isLoading$.next(false);
       this.exibirConteudo();
     }, 2000);
   }
