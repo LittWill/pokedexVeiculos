@@ -9,16 +9,14 @@ export class LoaderService {
   
   constructor() { }
   
-  open(): void {
+  exibir(): void {
     this.isLoading$.next(true);
     this.esconderConteudo();
   }
 
-  close(): void {
-    setTimeout(() => {
-      this.isLoading$.next(false);
-      this.exibirConteudo();
-    }, 2000);
+  esconder(): void {
+    this.isLoading$.next(false);
+    this.exibirConteudo();
   }
 
   private esconderConteudo() {

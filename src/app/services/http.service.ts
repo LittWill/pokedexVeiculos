@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IAnuncio } from '../interfaces/IAnuncio';
 
-import { IVeiculo } from '../interfaces/IVeiculo';
+import { IAnuncio } from '../interfaces/IAnuncio';
 
 @Injectable({
   providedIn: 'root'

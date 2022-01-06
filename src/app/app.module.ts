@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoaderService } from './services/loader.service';
 import { LoaderComponent } from './components/loader/loader.component';
 import { AnunciosService } from './services/anuncios.service';
+import { LoaderInterceptor } from './interceptors/loader.interceptor';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,11 @@ import { AnunciosService } from './services/anuncios.service';
     MatProgressSpinnerModule,
   ],
   // exports: [LoaderComponent],
-  providers: [LoaderService, AnunciosService],
+  providers: [
+    LoaderService, 
+    AnunciosService,
+    {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true},
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
