@@ -1,0 +1,9 @@
+.detalhes-wrapper {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 15px;
+}
+
+.detalhes-card {
+  max-width: 80%;
+}

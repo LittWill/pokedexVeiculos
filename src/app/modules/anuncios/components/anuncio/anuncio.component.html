@@ -1,8 +1,8 @@
 <mat-card class="card">
   <mat-card-header>
     <div mat-card-avatar></div>
-    <mat-card-title>{{anuncio.veiculo.marca}}</mat-card-title>
-    <mat-card-subtitle>{{anuncio.veiculo.modelo}}</mat-card-subtitle>
+    <mat-card-title>{{ anuncio.veiculo.marca }} {{ anuncio.veiculo.modelo }}</mat-card-title>
+    <mat-card-subtitle>{{anuncio.veiculo.ano}}</mat-card-subtitle>
   </mat-card-header>
     <img mat-card-image class="imagem" [src]="anuncio.veiculo.imagem" alt="imagem de carro">
   <mat-card-content>

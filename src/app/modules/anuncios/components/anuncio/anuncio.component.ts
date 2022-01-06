@@ -18,9 +18,9 @@ export class AnuncioComponent implements OnInit {
   }
 
   abrirDetalhes(anuncio: IAnuncio): void {
+    localStorage.setItem('ANUNCIO', JSON.stringify(anuncio))
     console.log(anuncio);
-    this.router.navigate(['anuncios/detalhes', anuncio]);
-    
+    this.router.navigate(['anuncios/detalhes']);
   }
 
 }

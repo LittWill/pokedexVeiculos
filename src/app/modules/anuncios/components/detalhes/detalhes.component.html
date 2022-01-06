@@ -1,1 +1,27 @@
-<p>detalhes works!</p>
+<!-- <pre>{{ anuncio | json }}</pre> -->
+<div class="detalhes-wrapper">
+  <mat-card class="detalhes-card">
+    <mat-card-header>
+      <mat-card-title>{{ anuncio.veiculo.marca }} {{ anuncio.veiculo.modelo }}</mat-card-title>
+      <mat-card-subtitle>{{ anuncio.veiculo.ano }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="anuncio.veiculo.imagem" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <mat-card-title>Detalhes do Veículo</mat-card-title>
+      <mat-list>
+        <mat-divider></mat-divider>
+        <mat-list-item>Descrição: {{ anuncio.descricao }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Valor: {{ anuncio.valor }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Kilometragem: {{ anuncio.veiculo.km }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Data de Anuncio: {{ anuncio.data }}</mat-list-item>
+      </mat-list>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="voltar()">VOLTAR</button>
+      <button mat-button>COMPRAR</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
