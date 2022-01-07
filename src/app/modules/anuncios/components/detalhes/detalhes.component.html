@@ -1,11 +1,13 @@
 <!-- <pre>{{ anuncio | json }}</pre> -->
 <div class="detalhes-wrapper">
-  <mat-card class="detalhes-card">
+  <mat-card class="detalhes-card-imagem">
     <mat-card-header>
       <mat-card-title>{{ anuncio.veiculo.marca }} {{ anuncio.veiculo.modelo }}</mat-card-title>
       <mat-card-subtitle>{{ anuncio.veiculo.ano }}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image [src]="anuncio.veiculo.imagem" alt="Photo of a Shiba Inu">
+    <img mat-card-image class="imagem" [src]="anuncio.veiculo.imagem" alt="Foto do carro">
+  </mat-card>
+  <mat-card class="detalhes-card-conteudo">
     <mat-card-content>
       <mat-card-title>Detalhes do Veículo</mat-card-title>
       <mat-list>
@@ -17,6 +19,7 @@
         <mat-list-item>Kilometragem: {{ anuncio.veiculo.km }}</mat-list-item>
         <mat-divider></mat-divider>
         <mat-list-item>Data de Anuncio: {{ anuncio.data }}</mat-list-item>
+        <mat-divider></mat-divider>
       </mat-list>
     </mat-card-content>
     <mat-card-actions>
