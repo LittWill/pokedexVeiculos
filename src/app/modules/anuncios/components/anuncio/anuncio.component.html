@@ -1,7 +1,7 @@
 <mat-card class="card">
     <img mat-card-image class="imagem" [src]="anuncio.veiculo.imagem" alt="imagem de carro">
     <mat-card-header>
-      <!-- <div mat-card-avatar><img src="https://logodownload.org/wp-content/uploads/2014/09/honda-carros-logo-1.png" alt=""></div> -->
+      <div mat-card-avatar><img class="logo" [src]="anuncio.veiculo.imagemLogo" alt="logotipo da marca"></div>
       
       <mat-card-title>{{anuncio.valor | currency: 'R$':true:'1.0' }}</mat-card-title>
       <mat-card-subtitle>{{anuncio.veiculo.ano}} | {{ anuncio.veiculo.km | number: '3.0' }}Km</mat-card-subtitle>

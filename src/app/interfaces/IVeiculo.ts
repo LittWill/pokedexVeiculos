@@ -5,5 +5,6 @@ export interface IVeiculo {
   imagem: string,
   marca: string,
   modelo: string,
-  km: number
+  km: number,
+  imagemLogo: string,
 }

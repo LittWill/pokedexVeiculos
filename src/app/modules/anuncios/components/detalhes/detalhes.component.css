@@ -18,6 +18,10 @@
   width: 100%;
 }
 
+.logo {
+  width: 50px;
+}
+
 @media (min-width: 642px){
   .detalhes-wrapper {
     display: flex;
