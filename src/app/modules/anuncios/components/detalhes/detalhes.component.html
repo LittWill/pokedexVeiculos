@@ -14,11 +14,11 @@
         <mat-divider></mat-divider>
         <mat-list-item>Descrição: {{ anuncio.descricao }}</mat-list-item>
         <mat-divider></mat-divider>
-        <mat-list-item>Valor: {{ anuncio.valor }}</mat-list-item>
+        <mat-list-item>Preço: {{ anuncio.valor | currency: 'R$' }}</mat-list-item>
         <mat-divider></mat-divider>
-        <mat-list-item>Kilometragem: {{ anuncio.veiculo.km }}</mat-list-item>
+        <mat-list-item>Km: {{ anuncio.veiculo.km | number: '3.0' }}</mat-list-item>
         <mat-divider></mat-divider>
-        <mat-list-item>Data de Anuncio: {{ anuncio.data }}</mat-list-item>
+        <mat-list-item>Data de Anuncio: {{ anuncio.data | date: 'dd/MM/yyyy' }}</mat-list-item>
         <mat-divider></mat-divider>
       </mat-list>
     </mat-card-content>

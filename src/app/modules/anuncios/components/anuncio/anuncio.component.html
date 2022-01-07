@@ -10,7 +10,7 @@
       {{anuncio.descricao}}
     </p>
     <p>
-      R$ {{anuncio.valor}},00
+      {{anuncio.valor | currency: 'R$'}}
     </p>
   </mat-card-content>
   <mat-card-actions>
