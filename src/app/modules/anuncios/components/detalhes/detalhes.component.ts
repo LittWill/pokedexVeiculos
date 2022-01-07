@@ -12,17 +12,20 @@ export class DetalhesComponent implements OnInit {
   anuncio: IAnuncio;
 
   constructor(private router: Router) { 
-    const anuncio = <string>localStorage.getItem('ANUNCIO');
-    this.anuncio = JSON.parse(anuncio);
+    this.anuncio = this.getLocalStorage();
   }
 
   ngOnInit(): void {
-    
+    if(!this.anuncio) this.voltar();
   }
 
   voltar() {
     localStorage.removeItem('ANUNCIO');
     this.router.navigate(['anuncios']);
+  }
+
+  private getLocalStorage(): IAnuncio {
+    return JSON.parse(<string>localStorage.getItem('ANUNCIO'));
   }
 
 }
