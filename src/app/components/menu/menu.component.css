@@ -1,4 +1,6 @@
 .menu {
+  display: flex;
+  justify-content: space-between;
   background-color: black;
   color: aliceblue;
   padding: 10px 0 10px 0;
@@ -7,4 +9,16 @@
   left: 0;
   right: 0;
   z-index: 1;
+}
+
+.lado-esquerdo {
+
+}
+
+.meio {
+  
+}
+
+.lado-direito {
+  
 }

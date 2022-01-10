@@ -1,5 +1,5 @@
 <mat-card class="card">
-    <img mat-card-image class="imagem" [src]="anuncio.veiculo.imagem" alt="imagem de carro">
+    <img mat-card-image class="imagem" (click)="abrirDetalhes(anuncio)" [src]="anuncio.veiculo.imagem" alt="imagem de carro">
     <mat-card-header>
       <div mat-card-avatar><img class="logo" [src]="anuncio.veiculo.imagemLogo" alt="logotipo da marca"></div>
       
