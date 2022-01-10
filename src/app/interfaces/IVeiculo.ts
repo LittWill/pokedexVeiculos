@@ -3,8 +3,10 @@ export interface IVeiculo {
   cor: string,
   id: number,
   imagem: string,
-  marca: string,
+  marca: {
+    imagemLogo: string,
+    nome: string
+  },
   modelo: string,
   km: number,
-  imagemLogo: string,
 }

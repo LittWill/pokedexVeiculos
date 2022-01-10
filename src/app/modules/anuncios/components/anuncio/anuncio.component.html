@@ -1,14 +1,14 @@
 <mat-card class="card">
     <img mat-card-image class="imagem" (click)="abrirDetalhes(anuncio)" [src]="anuncio.veiculo.imagem" alt="imagem de carro">
     <mat-card-header>
-      <div mat-card-avatar><img class="logo" [src]="anuncio.veiculo.imagemLogo" alt="logotipo da marca"></div>
+      <div mat-card-avatar><img class="logo" [src]="anuncio.veiculo.marca.imagemLogo" alt="logotipo da marca"></div>
       
       <mat-card-title>{{anuncio.valor | currency: 'R$':true:'1.0' }}</mat-card-title>
       <mat-card-subtitle>{{anuncio.veiculo.ano}} | {{ anuncio.veiculo.km | number: '3.0' }}Km</mat-card-subtitle>
     </mat-card-header>
   <mat-card-content>
     <p>
-      {{ anuncio.veiculo.marca }} {{ anuncio.veiculo.modelo }}
+      {{ anuncio.veiculo.marca.nome }} {{ anuncio.veiculo.modelo }}
     </p>
   </mat-card-content>
   <mat-card-actions>
