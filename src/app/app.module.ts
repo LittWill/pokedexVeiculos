@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
@@ -18,6 +19,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { AnunciosService } from './services/anuncios.service';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { LoginComponent } from './components/login/login.component';
+import { LoginService } from './services/login.service';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { LoginComponent } from './components/login/login.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     MatMenuModule,
     MatButtonModule,
     MatProgressSpinnerModule,
@@ -42,6 +45,7 @@ import { LoginComponent } from './components/login/login.component';
   providers: [
     LoaderService, 
     AnunciosService,
+    LoginService,
     {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true},
   ],
   bootstrap: [AppComponent],

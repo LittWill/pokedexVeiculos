@@ -1,15 +1,15 @@
 <div class="wrapper-login">
   <div class="box-login">
-    <form action="">
+    <form [formGroup]="formulario">
       <mat-form-field class="input" appearance="fill">
         <mat-label>Email</mat-label>
-        <input type="email" matInput>
+        <input matInput type="email" formControlName="email">
       </mat-form-field>
       <mat-form-field class="input" appearance="fill">
         <mat-label>Senha</mat-label>
-        <input type="password" matInput>
+        <input matInput type="password" formControlName="senha">
       </mat-form-field>
-      <button mat-button>Entrar</button>
+      <button mat-button (click)="efetuarLogin()">Entrar</button>
       <button mat-button>Limpar</button>
     </form>
   </div>
