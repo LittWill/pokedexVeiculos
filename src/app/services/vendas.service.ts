@@ -7,7 +7,7 @@ import { IVeiculo } from '../interfaces/IVeiculo';
 @Injectable({
   providedIn: 'root'
 })
-export class CarrosService {
+export class VendasService {
 
   constructor(private http: HttpClient) { }
 

@@ -13,12 +13,16 @@ const routes: Routes = [
     loadChildren: () => import('./modules/home/home.module').then(m => m.NavegacaoModule),
   },
   {
-    path: 'carros',
-    loadChildren: () => import('./modules/carros/carros.module').then(m => m.ListaCarrosModule),
+    path: 'vendas',
+    loadChildren: () => import('./modules/vendas/vendas.module').then(m => m.VendasModule),
   },
   {
     path: 'anuncios',
     loadChildren: () => import('./modules/anuncios/anuncios.module').then(m => m.AnunciosModule),
+  },
+  {
+    path: 'novo-anuncio',
+    loadChildren: () => import('./modules/novo-anuncio/novo-anuncio.module').then(m => m.NovoAnuncioModule),
   },
   {
     path: 'login',
