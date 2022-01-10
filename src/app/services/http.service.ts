@@ -13,7 +13,7 @@ export class HttpService {
   constructor(private http: HttpClient) { }
 
   getAnuncios(): Observable<IAnuncio[]>{
-    return this.http.get<IAnuncio[]>('https://pokedex-veiculos-development.herokuapp.com/anuncios');
+    return this.http.get<IAnuncio[]>('https://pokedex-veiculos.herokuapp.com/anuncios');
   }
 
   postLogin(credenciais: ICredenciaisDeAcesso): Observable<string>{
