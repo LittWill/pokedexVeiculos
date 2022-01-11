@@ -1,1 +1,44 @@
-<p>novo-anuncio works!</p>
+<h1>Novo Anúncio</h1>
+<div class="formulario-wrapper">
+  <div class="box-cadastro">
+    <form class="formulario">
+      <div class="row">
+        <mat-form-field class="input margin-right" appearance="fill">
+          <mat-label>Nome</mat-label>
+          <input type="text" matInput>
+        </mat-form-field>
+
+        <mat-form-field class="input" appearance="fill">
+          <mat-label>Sobrenome</mat-label>
+          <input type="text" matInput>
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+        <mat-form-field class="input margin-right" appearance="fill">
+          <mat-label>Celular</mat-label>
+          <input type="tel" matInput>
+        </mat-form-field>
+
+        <mat-form-field class="input" appearance="fill">
+          <mat-label>Selecione o perfil</mat-label>
+          <mat-select>
+            <mat-option value="1">Vendedor</mat-option>
+            <mat-option value="2">Comprador</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput>
+      </mat-form-field>
+
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>Senha</mat-label>
+        <input type="password" matInput>
+      </mat-form-field>
+      <button mat-raised-button>Registrar</button>
+    </form>
+  </div>
+</div>
