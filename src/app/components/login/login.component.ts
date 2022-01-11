@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { ICredenciaisDeAcesso } from 'src/app/interfaces/ICredenciaisDeAcesso';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -17,12 +18,10 @@ export class LoginComponent implements OnInit {
     private loginService: LoginService,
   ) {
     this.formulario = this.formBuilder.group({
-      email: [null],
-      senha: [null]
+      email: [null, [Validators.required, ]],
+      senha: [null, [Validators.required, ]]
     });
     this.credenciais = this.formulario.value;
-    
-    
    }
 
   ngOnInit(): void {
