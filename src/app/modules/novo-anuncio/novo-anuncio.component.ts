@@ -33,9 +33,7 @@ export class NovoAnuncioComponent implements OnInit {
 
   efetuarRegistro() {
     this.novoUsuario = this.formulario.value;
-    console.log(this.novoUsuario);
+    if(this.formulario.invalid) return;
     this.usuarioService.adicionarNovoUsuario(this.novoUsuario);
-  
-    console.log('oi');
   }
 }
