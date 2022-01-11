@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { IAnuncio } from '../interfaces/IAnuncio';
+import { IUsuario } from '../interfaces/IUsuario';
 import { HttpService } from './http.service';
 
 @Injectable({
@@ -9,7 +10,7 @@ import { HttpService } from './http.service';
 })
 export class AnunciosService {
 
-  constructor(private httpService: HttpService ) { }
+  constructor(private httpService: HttpService) { }
 
   listar(): Observable<IAnuncio[]>{
     return this.httpService.getAnuncios();
