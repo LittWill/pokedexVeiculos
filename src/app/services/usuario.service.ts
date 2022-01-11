@@ -16,6 +16,8 @@ export class UsuarioService {
   }
 
   adicionarNovoUsuario(novoUsuario: IUsuario){
-    return this.httpService.postNovoUsuario(novoUsuario).subscribe(res => console.log(res));
+    return this.httpService.postNovoUsuario(novoUsuario).subscribe(statusCode => {
+      if(statusCode === 201) alert('Novo usuário adicionado com sucesso'); else alert('Erro ao adicionar novo usuário.');
+    });
   }
 }
