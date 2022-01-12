@@ -28,9 +28,9 @@ export class LoginComponent implements OnInit {
   }
 
   efetuarLogin() {
+    if(this.formulario.invalid) return;
     this.credenciais = this.formulario.value;
     this.loginService.logar(this.credenciais);
-    console.log(this.credenciais);
   }
 
 }

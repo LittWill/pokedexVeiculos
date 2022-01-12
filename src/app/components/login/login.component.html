@@ -9,8 +9,8 @@
         <mat-label>Senha</mat-label>
         <input matInput type="password" formControlName="senha">
       </mat-form-field>
-      <button mat-button (click)="efetuarLogin()">Entrar</button>
-      <button mat-button>Limpar</button>
+      <button mat-raised-button class="margin-bottom" (click)="efetuarLogin()">Entrar</button>
+      <button mat-raised-button [routerLink]="['/novo-usuario']">Registre-se</button>
     </form>
   </div>
 </div>

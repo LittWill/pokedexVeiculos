@@ -25,6 +25,10 @@ const routes: Routes = [
     loadChildren: () => import('./modules/novo-anuncio/novo-anuncio.module').then(m => m.NovoAnuncioModule),
   },
   {
+    path: 'novo-usuario',
+    loadChildren: () => import('./modules/novo-usuario/novo-usuario.module').then(m => m.NovoUsuarioModule),
+  },
+  {
     path: 'login',
     component: LoginComponent,
   },

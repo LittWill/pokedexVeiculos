@@ -11,7 +11,11 @@
   </div>
   <div class="meio"></div>
   <div class="ladodireito">
-    <button mat-button [routerLink]="['login']">Login</button>
+    <button mat-button [matMenuTriggerFor]="login">Login</button>
+    <mat-menu #login="matMenu">
+      <button mat-menu-item [routerLink]="['login']">Entrar</button>
+      <button mat-menu-item [routerLink]="['novo-usuario']">Cadastre-se</button>
+    </mat-menu>
   </div>
 </nav>
 

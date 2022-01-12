@@ -17,3 +17,11 @@
 .input {
   width: 100%;
 }
+
+button {
+  width: 100%;
+}
+
+.margin-bottom {
+  margin-bottom: 18px;
+}
