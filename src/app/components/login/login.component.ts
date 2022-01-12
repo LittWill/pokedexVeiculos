@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
     private loginService: LoginService,
   ) {
     this.formulario = this.formBuilder.group({
-      email: [null, [Validators.required, ]],
+      email: [null, [Validators.required, Validators.email ]],
       senha: [null, [Validators.required, ]]
     });
     this.credenciais = this.formulario.value;
@@ -28,6 +28,8 @@ export class LoginComponent implements OnInit {
   }
 
   efetuarLogin() {
+    console.log(this.formulario);
+    
     if(this.formulario.invalid) return;
     this.credenciais = this.formulario.value;
     this.loginService.logar(this.credenciais);

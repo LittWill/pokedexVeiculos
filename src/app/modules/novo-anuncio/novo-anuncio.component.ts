@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 
-import { IUsuario } from 'src/app/interfaces/IUsuario';
-import { UsuarioService } from 'src/app/services/usuario.service';
+import { IAnuncio } from 'src/app/interfaces/IAnuncio';
+import { AnunciosService } from 'src/app/services/anuncios.service';
+
+
 
 @Component({
   selector: 'novo-anuncio',
@@ -11,29 +13,34 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class NovoAnuncioComponent implements OnInit {
   formulario: FormGroup;
-  novoUsuario: IUsuario;
+  novoAnuncio: IAnuncio;
 
   constructor(
     private formBuilder: FormBuilder,
-    private usuarioService: UsuarioService,
+    private anunciosService: AnunciosService,
   ) {
     this.formulario = this.formBuilder.group({
-      nome: [null, [Validators.required, ]],
-      sobrenome: [null, [Validators.required, ]],
-      telefone: [null, [Validators.required, ]],
-      perfilId: [null, [Validators.required, ]],
-      email: [null, [Validators.required, Validators.email]],
-      senha: [null, [Validators.required, ]],
+      descricao: [null, [Validators.required, ]],
+      valor: [null, [Validators.required, ]],
+      ano: [null, [Validators.required, ]],
+      cor: [null, [Validators.required, ]],
+      imagem: [null, [Validators.required, ]],
+      km: [null, [Validators.required, ]],
+      marcaId: [null, [Validators.required, ]],
+      modelo: [null, [Validators.required, ]],
+      
     });
-    this.novoUsuario = this.formulario.value;
+    this.novoAnuncio = this.formulario.value;
   }
 
   ngOnInit(): void {
   }
 
   efetuarRegistro() {
-    this.novoUsuario = this.formulario.value;
+    this.novoAnuncio = this.formulario.value;
+    console.log(this.novoAnuncio);
+    
     if(this.formulario.invalid) return;
-    this.usuarioService.adicionarNovoUsuario(this.novoUsuario);
+    this.anunciosService.adicionar(this.novoAnuncio);
   }
 }

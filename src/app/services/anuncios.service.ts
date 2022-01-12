@@ -15,4 +15,8 @@ export class AnunciosService {
   listar(): Observable<IAnuncio[]>{
     return this.httpService.getAnuncios();
   }
+
+  adicionar(novoAnuncio: IAnuncio) {
+    return this.httpService.postNovoAnuncio(novoAnuncio);
+  }
 }

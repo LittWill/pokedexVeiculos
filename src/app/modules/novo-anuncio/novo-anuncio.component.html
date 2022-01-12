@@ -4,39 +4,47 @@
     <form class="formulario" [formGroup]="formulario">
       <div class="row">
         <mat-form-field class="input margin-right" appearance="fill">
-          <mat-label>Nome</mat-label>
-          <input type="text" matInput formControlName="nome">
+          <mat-label>Descrição</mat-label>
+          <input type="text" matInput formControlName="descricao">
         </mat-form-field>
 
         <mat-form-field class="input" appearance="fill">
-          <mat-label>Sobrenome</mat-label>
-          <input type="text" matInput formControlName="sobrenome">
+          <mat-label>Preço</mat-label>
+          <input type="text" matInput formControlName="valor">
         </mat-form-field>
       </div>
 
       <div class="row">
         <mat-form-field class="input margin-right" appearance="fill">
-          <mat-label>Celular</mat-label>
-          <input type="tel" matInput formControlName="telefone">
+          <mat-label>Ano</mat-label>
+          <input type="text" matInput formControlName="ano">
         </mat-form-field>
 
         <mat-form-field class="input" appearance="fill">
-          <mat-label>Selecione o perfil</mat-label>
-          <mat-select formControlName="perfilId">
-            <mat-option value="1">Vendedor</mat-option>
-            <mat-option value="2">Comprador</mat-option>
+          <mat-label>Selecione a marca</mat-label>
+          <mat-select formControlName="marca">
+            <mat-option value="1">Volkswagen</mat-option>
+            <mat-option value="2">Nissan</mat-option>
+            <mat-option value="3">Porshe</mat-option>
+            <mat-option value="4">Honda</mat-option>
+            <mat-option value="4">Ferrari</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
 
       <mat-form-field class="input" appearance="fill">
-        <mat-label>Email</mat-label>
-        <input type="email" matInput formControlName="email">
+        <mat-label>Cor</mat-label>
+        <input type="text" matInput formControlName="cor">
       </mat-form-field>
 
       <mat-form-field class="input" appearance="fill">
-        <mat-label>Senha</mat-label>
-        <input type="password" matInput formControlName="senha">
+        <mat-label>Imagem</mat-label>
+        <input type="text" matInput formControlName="imagem">
+      </mat-form-field>
+
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>Modelo</mat-label>
+        <input type="text" matInput formControlName="modelo">
       </mat-form-field>
       <button mat-raised-button (click)="efetuarRegistro()">Registrar</button>
     </form>

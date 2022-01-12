@@ -17,6 +17,10 @@ export class HttpService {
     return this.http.get<IAnuncio[]>('https://pokedex-veiculos.herokuapp.com/anuncios');
   }
 
+  postNovoAnuncio(novoAnuncio: IAnuncio): Observable<any>{
+    return this.http.post<any>('https://pokedex-veiculos.herokuapp.com/anuncios', novoAnuncio);
+  }
+
   postLogin(credenciais: ICredenciaisDeAcesso): Observable<string>{
     return this.http.post<string>('https://pokedex-veiculos.herokuapp.com/auth', credenciais);
   }
