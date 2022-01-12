@@ -15,6 +15,11 @@ import { ListaAnunciosComponent } from './components/lista-anuncios/lista-anunci
 import { AnuncioComponent } from './components/anuncio/anuncio.component';
 import { DetalhesComponent } from './components/detalhes/detalhes.component';
 import { AnunciosComponent } from './anuncios.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { NovoAnuncioComponent } from './components/novo-anuncio/novo-anuncio.component';
 
 
 
@@ -24,13 +29,18 @@ import { AnunciosComponent } from './anuncios.component';
     AnuncioComponent,
     DetalhesComponent,
     AnunciosComponent,
+    NovoAnuncioComponent,
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     MatCardModule,
     MatButtonModule,
     MatListModule,
     MatDividerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
     AnunciosRoutingModule,
   ],
   providers: [

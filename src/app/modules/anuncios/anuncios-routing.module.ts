@@ -4,11 +4,13 @@ import { AnunciosComponent } from './anuncios.component';
 import { DetalhesComponent } from './components/detalhes/detalhes.component';
 
 import { ListaAnunciosComponent } from './components/lista-anuncios/lista-anuncios.component';
+import { NovoAnuncioComponent } from './components/novo-anuncio/novo-anuncio.component';
 
 const routes: Routes = [
   {path: '', component: AnunciosComponent, children: [
     {path: '', component: ListaAnunciosComponent},
     {path: 'detalhes', component: DetalhesComponent},
+    {path: 'novo-anuncio', component: NovoAnuncioComponent},
   ]},
 ];
 
