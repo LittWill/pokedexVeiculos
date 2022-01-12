@@ -21,8 +21,8 @@ const routes: Routes = [
     loadChildren: () => import('./modules/anuncios/anuncios.module').then(m => m.AnunciosModule),
   },
   {
-    path: 'novo-usuario',
-    loadChildren: () => import('./modules/novo-usuario/novo-usuario.module').then(m => m.NovoUsuarioModule),
+    path: 'usuario',
+    loadChildren: () => import('./modules/usuario/usuario.module').then(m => m.UsuarioModule),
   },
   {
     path: 'login',

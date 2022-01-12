@@ -1,23 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { NovoUsuarioRoutingModule } from './novo-usuario-routing.module';
-import { NovoUsuarioComponent } from './novo-usuario.component';
+import { UsuarioRoutingModule } from './usuario-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
+import { UsuarioComponent } from './usuario.component';
+import { NovoUsuarioComponent } from './components/novo-usuario/novo-usuario.component';
 
 
 @NgModule({
   declarations: [
-    NovoUsuarioComponent
+    UsuarioComponent,
+    NovoUsuarioComponent,
   ],
   imports: [
     CommonModule,
-    NovoUsuarioRoutingModule,
+    UsuarioRoutingModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
@@ -25,4 +27,4 @@ import { MatSelectModule } from '@angular/material/select';
     MatButtonModule,
   ]
 })
-export class NovoUsuarioModule { }
+export class UsuarioModule { }
