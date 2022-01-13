@@ -1,10 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule, registerLocaleData } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import {MatListModule} from '@angular/material/list';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+
+import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 
 import { LOCALE_ID } from '@angular/core';
 import localePt from '@angular/common/locales/pt';
@@ -15,10 +21,6 @@ import { ListaAnunciosComponent } from './components/lista-anuncios/lista-anunci
 import { AnuncioComponent } from './components/anuncio/anuncio.component';
 import { DetalhesComponent } from './components/detalhes/detalhes.component';
 import { AnunciosComponent } from './anuncios.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
 import { NovoAnuncioComponent } from './components/novo-anuncio/novo-anuncio.component';
 
 
@@ -41,10 +43,11 @@ import { NovoAnuncioComponent } from './components/novo-anuncio/novo-anuncio.com
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    NgxMatFileInputModule,
     AnunciosRoutingModule,
   ],
   providers: [
-    {provide:  LOCALE_ID, useValue: 'pt-br'},
+    { provide: LOCALE_ID, useValue: 'pt-br' },
   ]
 })
 export class AnunciosModule { }
