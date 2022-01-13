@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -40,6 +41,7 @@ import { LoginService } from './services/login.service';
     MatProgressSpinnerModule,
     MatFormFieldModule,
     MatInputModule,
+    MatIconModule,
   ],
   // exports: [LoaderComponent],
   providers: [

@@ -11,10 +11,12 @@
   </div>
   <div class="meio"></div>
   <div class="ladodireito">
-    <button mat-button [matMenuTriggerFor]="login">Login</button>
+    <button mat-button [matMenuTriggerFor]="login">
+      <mat-icon aria-hidden="false" aria-label="Example home icon">person</mat-icon>
+    </button>
     <mat-menu #login="matMenu">
       <button mat-menu-item [routerLink]="['login']">Entrar</button>
-      <button mat-menu-item [routerLink]="['usuario/novo-usuario']">Cadastre-se</button>
+      <button mat-menu-item [routerLink]="['usuario/novo-usuario']">Crie a sua conta</button>
     </mat-menu>
   </div>
 </nav>
