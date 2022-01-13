@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -10,19 +10,26 @@ import { IUsuario } from '../interfaces/IUsuario';
   providedIn: 'root'
 })
 export class HttpService {
+  private token = '';
 
   constructor(private http: HttpClient) { }
+
+  private sendAuthorizationToken() {
+    this.token = <string>localStorage.getItem('TOKEN');
+    console.log(this.token);
+    return new HttpHeaders().set('Authorization', this.token);
+  }
 
   getAnuncios(): Observable<IAnuncio[]>{
     return this.http.get<IAnuncio[]>('https://pokedex-veiculos.herokuapp.com/anuncios');
   }
 
-  postNovoAnuncio(novoAnuncio: IAnuncio): Observable<any>{
-    return this.http.post<any>('https://pokedex-veiculos.herokuapp.com/anuncios', novoAnuncio);
+  postNovoAnuncio(novoAnuncio: any): Observable<any>{
+    return this.http.post<any>('https://pokedex-veiculos.herokuapp.com/anuncios', novoAnuncio, {headers: this.sendAuthorizationToken()});
   }
 
-  postLogin(credenciais: ICredenciaisDeAcesso): Observable<string>{
-    return this.http.post<string>('https://pokedex-veiculos.herokuapp.com/auth', credenciais);
+  postLogin(credenciais: ICredenciaisDeAcesso): Observable<any>{
+    return this.http.post<any>('https://pokedex-veiculos.herokuapp.com/auth', credenciais);
   }
 
   getUsuarios(): Observable<any>{

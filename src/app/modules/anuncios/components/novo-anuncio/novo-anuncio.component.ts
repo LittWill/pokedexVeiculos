@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { IAnuncio } from 'src/app/interfaces/IAnuncio';
+// import { IAnuncio } from 'src/app/interfaces/IAnuncio';
 import { AnunciosService } from 'src/app/services/anuncios.service';
 
 
@@ -13,34 +13,56 @@ import { AnunciosService } from 'src/app/services/anuncios.service';
 })
 export class NovoAnuncioComponent implements OnInit {
   formulario: FormGroup;
-  novoAnuncio: IAnuncio;
+  novoAnuncio: any;
 
   constructor(
     private formBuilder: FormBuilder,
     private anunciosService: AnunciosService,
   ) {
     this.formulario = this.formBuilder.group({
-      descricao: [null, [Validators.required, ]],
-      valor: [null, [Validators.required, ]],
-      ano: [null, [Validators.required, ]],
-      cor: [null, [Validators.required, ]],
-      imagem: [null, [Validators.required, ]],
-      km: [null, [Validators.required, ]],
-      marcaId: [null, [Validators.required, ]],
-      modelo: [null, [Validators.required, ]],
-      
+      descricao: [null, [Validators.required,]],
+      valor: [null, [Validators.required,]],
+      ano: [null, [Validators.required,]],
+      cor: [null, [Validators.required,]],
+      imagem: [null, [Validators.required,]],
+      km: [null, [Validators.required,]],
+      marcaId: [null, [Validators.required,]],
+      modelo: [null, [Validators.required,]],
+
     });
-    this.novoAnuncio = this.formulario.value;
+    this.novoAnuncio = {
+      descricao: '',
+      valor: 0,
+      veiculo: {
+        ano: '',
+        cor: '',
+        imagem: '',
+        km: 0,
+        marcaId: 0,
+        modelo: '',
+      }
+    };
   }
 
   ngOnInit(): void {
   }
 
   efetuarRegistro() {
-    this.novoAnuncio = this.formulario.value;
+    this.novoAnuncio = {
+      descricao: this.formulario.value.descricao,
+      valor: this.formulario.value.valor,
+      veiculo: {
+        ano: this.formulario.value.ano,
+        cor: this.formulario.value.cor,
+        imagem: this.formulario.value.imagem,
+        km: this.formulario.value.km,
+        marcaId: this.formulario.value.marcaId,
+        modelo: this.formulario.value.modelo,
+      }
+    };
     console.log(this.novoAnuncio);
-    
-    if(this.formulario.invalid) return;
+
+    // if(this.formulario.invalid) return;
     this.anunciosService.adicionar(this.novoAnuncio);
   }
 }

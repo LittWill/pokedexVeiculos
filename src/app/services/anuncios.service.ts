@@ -16,7 +16,7 @@ export class AnunciosService {
     return this.httpService.getAnuncios();
   }
 
-  adicionar(novoAnuncio: IAnuncio) {
-    return this.httpService.postNovoAnuncio(novoAnuncio);
+  adicionar(novoAnuncio: any) {
+    this.httpService.postNovoAnuncio(novoAnuncio).subscribe(res => console.log(res));
   }
 }
