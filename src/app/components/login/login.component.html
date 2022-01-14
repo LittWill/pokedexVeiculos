@@ -4,19 +4,24 @@
       <mat-form-field class="input" appearance="fill">
         <mat-label>Email</mat-label>
         <input matInput type="email" formControlName="email">
-        <mat-error *ngIf="formulario.controls.email.hasError('email') && !formulario.controls.email.hasError('required')">
+        <mat-error class="erro-mensagem" *ngIf="formulario.controls.email.hasError('email') && !formulario.controls.email.hasError('required')">
           Por favor tente com um email válido.
         </mat-error> 
-        <mat-error *ngIf="formulario.controls.email.hasError('required')">
+        <mat-error class="erro-mensagem" *ngIf="formulario.controls.email.hasError('required')">
           Email é <strong>obrigatório</strong>.
         </mat-error>
       </mat-form-field>
       <mat-form-field class="input" appearance="fill">
         <mat-label>Senha</mat-label>
         <input matInput type="password" formControlName="senha">
+        <mat-error class="erro-mensagem" *ngIf="formulario.controls.senha.hasError('required')">
+          Senha é <strong>obrigatório</strong>.
+        </mat-error>
       </mat-form-field>
-      <button mat-raised-button class="margin-bottom" (click)="efetuarLogin()">Entrar</button>
-      <button mat-raised-button [routerLink]="['/usuario/novo-usuario']">Criar sua conta</button>
+      <div class="botoes-form">
+        <button mat-raised-button class="margin-bottom" (click)="efetuarLogin()">Entrar</button>
+        <button mat-raised-button [routerLink]="['/usuario/novo-usuario']">Criar sua conta</button>
+      </div>
     </form>
   </div>
 </div>

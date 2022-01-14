@@ -59,7 +59,7 @@ export class NovoAnuncioComponent implements OnInit {
       veiculo: {
         ano: this.formulario.value.ano,
         cor: this.formulario.value.cor,
-        imagem: this.formulario.value.imagem,
+        imagem: this.imagemControl.value,
         km: this.formulario.value.km,
         marcaId: this.formulario.value.marcaId,
         modelo: this.formulario.value.modelo,

@@ -1,3 +1,7 @@
+button {
+  width: 100%;
+}
+
 .wrapper-login {
   display: flex;
   justify-content: center;
@@ -16,10 +20,11 @@
 
 .input {
   width: 100%;
+  margin-top: 5px;
 }
 
-button {
-  width: 100%;
+.botoes-form {
+  margin-top: 5px;
 }
 
 .margin-bottom {
