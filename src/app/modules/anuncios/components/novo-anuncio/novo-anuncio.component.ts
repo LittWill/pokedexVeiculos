@@ -66,6 +66,8 @@ export class NovoAnuncioComponent implements OnInit {
       }
     };
     console.log(this.novoAnuncio);
+    console.log(this.formulario);
+    
     console.log(this.imagemControl)
 
     if(this.formulario.invalid || this.imagemControl.invalid) return;

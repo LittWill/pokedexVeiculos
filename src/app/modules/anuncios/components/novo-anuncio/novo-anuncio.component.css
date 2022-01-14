@@ -21,10 +21,12 @@
 
 .input {
   width: 100%;
+  margin-top: 5px;
 }
 
 button {
   width: 100%;
+  margin-top: 5px;
 }
 
 @media (min-width: 642px){

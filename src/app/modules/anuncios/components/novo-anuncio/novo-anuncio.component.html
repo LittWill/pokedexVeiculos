@@ -6,11 +6,17 @@
         <mat-form-field class="input margin-right" appearance="fill">
           <mat-label>Descrição</mat-label>
           <input type="text" matInput formControlName="descricao">
+          <mat-error class="erro-mensagem" *ngIf="formulario.controls.descricao.hasError('required')">
+            Descrição é <strong>obrigatório</strong>.
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field class="input" appearance="fill">
           <mat-label>Preço</mat-label>
           <input type="text" matInput formControlName="valor">
+          <mat-error class="erro-mensagem" *ngIf="formulario.controls.valor.hasError('required')">
+            Preço é <strong>obrigatório</strong>.
+          </mat-error>
         </mat-form-field>
       </div>
 
@@ -18,6 +24,9 @@
         <mat-form-field class="input margin-right" appearance="fill">
           <mat-label>Ano</mat-label>
           <input type="text" matInput formControlName="ano">
+          <mat-error class="erro-mensagem" *ngIf="formulario.controls.ano.hasError('required')">
+            Ano é <strong>obrigatório</strong>.
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field class="input" appearance="fill">
@@ -29,27 +38,42 @@
             <mat-option value="4">Honda</mat-option>
             <mat-option value="4">Ferrari</mat-option>
           </mat-select>
+          <mat-error class="erro-mensagem" *ngIf="formulario.controls.marcaId.hasError('required')">
+            Marca é <strong>obrigatório</strong>.
+          </mat-error>
         </mat-form-field>
       </div>
 
       <mat-form-field class="input" appearance="fill">
         <mat-label>Km</mat-label>
         <input type="text" matInput formControlName="km">
+        <mat-error class="erro-mensagem" *ngIf="formulario.controls.km.hasError('required')">
+          Km é <strong>obrigatório</strong>.
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field class="input" appearance="fill">
         <mat-label>Cor</mat-label>
         <input type="text" matInput formControlName="cor">
+        <mat-error class="erro-mensagem" *ngIf="formulario.controls.cor.hasError('required')">
+          Cor é <strong>obrigatório</strong>.
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field class="input" appearance="fill">
         <mat-label>Imagem</mat-label>
         <ngx-mat-file-input [formControl]="imagemControl" [multiple]="multiple" [accept]="accept"></ngx-mat-file-input>
+        <mat-error class="erro-mensagem" *ngIf="imagemControl.errors">
+          Imagem é <strong>obrigatório</strong>.
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field class="input" appearance="fill">
         <mat-label>Modelo</mat-label>
         <input type="text" matInput formControlName="modelo">
+        <mat-error class="erro-mensagem" *ngIf="formulario.controls.modelo.hasError('required')">
+          Modelo é <strong>obrigatório</strong>.
+        </mat-error>
       </mat-form-field>
       <button mat-raised-button (click)="efetuarRegistro()">Registrar</button>
     </form>
