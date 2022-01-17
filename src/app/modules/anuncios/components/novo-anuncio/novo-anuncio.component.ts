@@ -22,6 +22,9 @@ export class NovoAnuncioComponent implements OnInit {
   imagemControl: FormControl;
   public imagens: any;
   maxSize = 16;
+  
+
+  
 
   constructor(
     private formBuilder: FormBuilder,
@@ -59,18 +62,18 @@ export class NovoAnuncioComponent implements OnInit {
       veiculo: {
         ano: this.formulario.value.ano,
         cor: this.formulario.value.cor,
-        imagem: this.imagemControl.value,
         km: this.formulario.value.km,
         marcaId: this.formulario.value.marcaId,
         modelo: this.formulario.value.modelo,
       }
     };
-    console.log(this.novoAnuncio);
-    console.log(this.formulario);
+     console.log(this.novoAnuncio);
+    // console.log(this.formulario);
     
-    console.log(this.imagemControl)
-
-    if(this.formulario.invalid || this.imagemControl.invalid) return;
-    this.anunciosService.adicionar(this.novoAnuncio);
+     console.log(this.imagemControl)
+    this.anunciosService.upload(this.imagemControl.value);
+   
+    // if(this.formulario.invalid || this.imagemControl.invalid) return;
+    // this.anunciosService.adicionar(this.novoAnuncio);
   }
 }
