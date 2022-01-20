@@ -11,3 +11,16 @@ export interface IAnuncio {
   status: string,
   data: Date
 }
+
+export interface INovoAnuncio {
+  descricao: string,
+  valor: number,
+  veiculo: {
+    ano: number,
+    cor: string,
+    imagem: string,
+    km: number,
+    marcaId: number,
+    modelo: string,
+  }
+}

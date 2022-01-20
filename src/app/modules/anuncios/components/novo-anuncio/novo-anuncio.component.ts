@@ -1,11 +1,11 @@
 import { MaxSizeValidator } from '@angular-material-components/file-input';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { Observable, ReplaySubject } from 'rxjs';
+import { INovoAnuncio } from 'src/app/interfaces/IAnuncio';
 
 // import { IAnuncio } from 'src/app/interfaces/IAnuncio';
 import { AnunciosService } from 'src/app/services/anuncios.service';
-
-
 
 @Component({
   selector: 'novo-anuncio',
@@ -14,7 +14,7 @@ import { AnunciosService } from 'src/app/services/anuncios.service';
 })
 export class NovoAnuncioComponent implements OnInit {
   formulario: FormGroup;
-  novoAnuncio: any;
+  novoAnuncio: INovoAnuncio;
   // color: ThemePalette = 'primary';
   disabled: boolean = false;
   multiple: boolean = false;
@@ -22,9 +22,7 @@ export class NovoAnuncioComponent implements OnInit {
   imagemControl: FormControl;
   public imagens: any;
   maxSize = 16;
-  
-
-  
+  imageBase64 = "";
 
   constructor(
     private formBuilder: FormBuilder,
@@ -43,16 +41,29 @@ export class NovoAnuncioComponent implements OnInit {
       Validators.required,
       // MaxSizeValidator(this.maxSize * 1024)
     ])
+    this.novoAnuncio = {
+      descricao: this.formulario.value.descricao,
+      valor: this.formulario.value.valor,
+      veiculo: {
+        ano: this.formulario.value.ano,
+        cor: this.formulario.value.cor,
+        imagem: '',
+        km: this.formulario.value.km,
+        marcaId: this.formulario.value.marcaId,
+        modelo: this.formulario.value.modelo,
+      }
+    }
   }
 
-  ngOnInit(): void {
-    // this.imagemControl.valueChanges.subscribe((imagens: any) => {
-    //   if (!Array.isArray(imagens)) {
-    //     this.imagens = [imagens];
-    //   } else {
-    //     this.imagens = imagens;
-    //   }
-    // })
+  ngOnInit(): void {}
+
+  getBase64(file: File): Observable<string> {
+    const result = new ReplaySubject<string>(1);
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => result.next(reader.result?.toString());
+    reader.onerror = (error) => console.log('Error: ', error);
+    return result;
   }
 
   efetuarRegistro() {
@@ -62,18 +73,23 @@ export class NovoAnuncioComponent implements OnInit {
       veiculo: {
         ano: this.formulario.value.ano,
         cor: this.formulario.value.cor,
+        imagem: '',
         km: this.formulario.value.km,
         marcaId: this.formulario.value.marcaId,
         modelo: this.formulario.value.modelo,
       }
     };
-     console.log(this.novoAnuncio);
-    // console.log(this.formulario);
     
-     console.log(this.imagemControl)
-    this.anunciosService.upload(this.imagemControl.value);
-   
-    // if(this.formulario.invalid || this.imagemControl.invalid) return;
-    // this.anunciosService.adicionar(this.novoAnuncio);
+    const fileImage = this.imagemControl.value
+    
+    this.getBase64(fileImage).subscribe(fileImagemBase64 => {
+      this.imageBase64 = fileImagemBase64;
+      console.log(this.imageBase64);
+      this.novoAnuncio.veiculo.imagem = this.imageBase64;
+      if(this.formulario.invalid || this.imagemControl.invalid) return;
+      this.anunciosService.adicionar(this.novoAnuncio);
+    });
+
+    
   }
 }

@@ -12,7 +12,7 @@ export class AnunciosService {
 
   constructor(private httpService: HttpService) { }
 
-  listar(): Observable<IAnuncio[]>{
+  listar(): Observable<IAnuncio[]> {
     return this.httpService.getAnuncios();
   }
 
@@ -21,8 +21,18 @@ export class AnunciosService {
   }
 
   upload(files: any) {
-    const formData = new FormData();
-    formData.append('file', files);
-    this.httpService.postImagem(formData).subscribe(res => console.log(res));
+    console.log(files);
+    
+    
+    
+   
+    // files = {
+    //   teste: 'teste'
+    // }
+    this.httpService.postImagem(files).subscribe(res => console.log(res));
   }
+
+ 
+
+  
 }
