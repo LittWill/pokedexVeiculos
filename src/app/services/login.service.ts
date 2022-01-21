@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ELocalStorageKey } from '../enums/ELocalStorageKey';
 
 import { ICredenciaisDeAcesso } from '../interfaces/ICredenciaisDeAcesso';
 import { HttpService } from './http.service';
@@ -12,13 +13,15 @@ export class LoginService {
 
   logar(credenciais: ICredenciaisDeAcesso) {
     this.httpService.postLogin(credenciais).subscribe(data => {
-      const {token} = data;
+      const {token, usuario} = data;
       console.log(token);
-      localStorage.setItem('TOKEN', token);
+      localStorage.setItem(ELocalStorageKey.TOKEN, token);
+      localStorage.setItem(ELocalStorageKey.USUARIO_LOGADO_INFO, usuario);
     });
   }
 
   deslogar() {
-    localStorage.removeItem('TOKEN');
+    localStorage.removeItem(ELocalStorageKey.TOKEN);
+    localStorage.removeItem(ELocalStorageKey.USUARIO_LOGADO_INFO);
   }
 }
