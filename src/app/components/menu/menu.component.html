@@ -9,15 +9,33 @@
       <button mat-menu-item [routerLink]="['/']">Etc</button>
     </mat-menu>
   </div>
-  <div class="meio"></div>
+  <div class="meio">
+    <!-- <p class="nome-usuario">Olá Usuário</p> -->
+  </div>
   <div class="ladodireito">
-    <button mat-button [matMenuTriggerFor]="login">
-      <mat-icon aria-hidden="false" aria-label="Example home icon">person</mat-icon>
-    </button>
-    <mat-menu #login="matMenu">
-      <button mat-menu-item [routerLink]="['login']">Entrar</button>
-      <button mat-menu-item [routerLink]="['usuario/novo-usuario']">Crie a sua conta</button>
-    </mat-menu>
+    <ng-container
+      *ngIf="estaLogado; then areaLogada; else areaDeslogada">
+    </ng-container>
+
+    <ng-template #areaDeslogada>
+      <button mat-button [matMenuTriggerFor]="login">
+        <mat-icon aria-hidden="false" aria-label="Icone de Perfil">person</mat-icon>
+      </button>
+      <mat-menu #login="matMenu">
+        <button mat-menu-item [routerLink]="['login']">Entrar</button>
+        <button mat-menu-item [routerLink]="['usuario/novo-usuario']">Crie a sua conta</button>
+      </mat-menu>
+    </ng-template>
+    
+    <ng-template #areaLogada>
+      <button mat-button [matMenuTriggerFor]="perfil">
+        <p class="nome-usuario">Olá Usuário</p>
+      </button>
+      <mat-menu #perfil="matMenu">
+        <button mat-menu-item [routerLink]="['/']">Perfil</button>
+        <button mat-menu-item (click)="encerrarSessao()">Sair</button>
+      </mat-menu>
+    </ng-template>
   </div>
 </nav>
 

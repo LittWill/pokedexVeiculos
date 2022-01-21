@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
     if(this.formulario.invalid) return;
     this.credenciais = this.formulario.value;
     this.loginService.logar(this.credenciais);
+    this.loginService.changeValue();
   }
 
 }

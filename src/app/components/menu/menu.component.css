@@ -9,14 +9,22 @@
   left: 0;
   right: 0;
   z-index: 1;
+  max-height: 35px;
 }
 
 .lado-esquerdo {
-
+  display: flex;
+  flex-direction: row;
 }
 
 .meio {
-  
+  /* text-align: end;
+  width: calc(100% / 2);
+  padding-top: 8px; */
+}
+
+.nome-usuario {
+  white-space: nowrap;
 }
 
 .lado-direito {
