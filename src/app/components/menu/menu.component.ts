@@ -8,23 +8,19 @@ import { LoginService } from '../../services/login.service'
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  estaLogado = false;
+  private _estaLogado = false;
 
   constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
-    this.loginService.logado.subscribe(valor => this.estaLogado = valor);
-    console.log(this.estaLogado);
+    this.loginService.usuarioEstaLogado.subscribe(estaLogado => this._estaLogado = estaLogado);
   }
 
-  encerrarSessao() {
+  get estaLogado(): boolean {
+    return this._estaLogado;
+  }
+
+  encerrarSessao(): void {
     this.loginService.deslogar();
-    
-    // this.verificarLogin();
-    console.log(this.estaLogado);
-  }
-
-  private verificarLogin() {
-    this.estaLogado = this.loginService.usuarioEstaLogado;
   }
 }

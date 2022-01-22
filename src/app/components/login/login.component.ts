@@ -27,13 +27,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  efetuarLogin() {
-    console.log(this.formulario);
-    
+  efetuarLogin(): void {
     if(this.formulario.invalid) return;
     this.credenciais = this.formulario.value;
     this.loginService.logar(this.credenciais);
-    this.loginService.changeValue();
   }
 
 }

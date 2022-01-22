@@ -9,32 +9,26 @@ import { HttpService } from './http.service';
   providedIn: 'root'
 })
 export class LoginService {
-  private _usuarioEstaLogado = false;
-  logado = new BehaviorSubject(false);
+  usuarioEstaLogado = new BehaviorSubject(false);
 
   constructor(private httpService: HttpService) { }
 
-  get usuarioEstaLogado() {
-    return this._usuarioEstaLogado;
+  private alterarEstadoDoMenu(): void {
+    this.usuarioEstaLogado.next(true);
   }
 
-  changeValue() {
-    this.logado.next(true);
-  }
-
-  logar(credenciais: ICredenciaisDeAcesso) {
+  logar(credenciais: ICredenciaisDeAcesso): void {
     this.httpService.postLogin(credenciais).subscribe(data => {
-      const {token, usuario} = data;
+      const { token, usuario } = data;
       localStorage.setItem(ELocalStorageKey.TOKEN, token);
       localStorage.setItem(ELocalStorageKey.USUARIO_LOGADO_INFO, usuario);
-      // this._usuarioEstaLogado = true;
+      this.alterarEstadoDoMenu();
     });
   }
 
-  deslogar() {
+  deslogar(): void {
     localStorage.removeItem(ELocalStorageKey.TOKEN);
     localStorage.removeItem(ELocalStorageKey.USUARIO_LOGADO_INFO);
-    this.logado.next(false);
-    // this._usuarioEstaLogado = false;
+    this.usuarioEstaLogado.next(false);
   }
 }
