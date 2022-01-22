@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { ELocalStorageKey } from '../enums/ELocalStorageKey';
 
+import { ELocalStorageKey } from '../enums/ELocalStorageKey';
 import { ICredenciaisDeAcesso } from '../interfaces/ICredenciaisDeAcesso';
 import { HttpService } from './http.service';
 
@@ -21,7 +21,7 @@ export class LoginService {
     this.httpService.postLogin(credenciais).subscribe(data => {
       const { token, usuario } = data;
       localStorage.setItem(ELocalStorageKey.TOKEN, token);
-      localStorage.setItem(ELocalStorageKey.USUARIO_LOGADO_INFO, usuario);
+      localStorage.setItem(ELocalStorageKey.USUARIO_LOGADO_INFO, JSON.stringify(usuario));
       this.alterarEstadoDoMenu();
     });
   }

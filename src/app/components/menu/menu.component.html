@@ -27,7 +27,7 @@
     
     <ng-template #areaLogada>
       <button mat-button [matMenuTriggerFor]="perfil">
-        <p class="nome-usuario">Olá Usuário</p>
+        <p class="nome-usuario">Olá {{ usuarioLogado.nome }}</p>
       </button>
       <mat-menu #perfil="matMenu">
         <button mat-menu-item [routerLink]="['/']">Perfil</button>
