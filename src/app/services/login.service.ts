@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
 import { ELocalStorageKey } from '../enums/ELocalStorageKey';
@@ -11,7 +12,10 @@ import { HttpService } from './http.service';
 export class LoginService {
   usuarioEstaLogado = new BehaviorSubject(false);
 
-  constructor(private httpService: HttpService) { }
+  constructor(
+    private httpService: HttpService,
+    private router: Router
+  ) { }
 
   private alterarEstadoDoMenu(): void {
     this.usuarioEstaLogado.next(true);
@@ -23,6 +27,7 @@ export class LoginService {
       localStorage.setItem(ELocalStorageKey.TOKEN, token);
       localStorage.setItem(ELocalStorageKey.USUARIO_LOGADO_INFO, JSON.stringify(usuario));
       this.alterarEstadoDoMenu();
+      this.router.navigate(['home']);
     });
   }
 

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { NavegacaoRoutingModule } from './home-routing.module';
-import { HomeComponent } from './components/home/home.component';
+import { HomeComponent } from './home.component';
 
 
 @NgModule({
