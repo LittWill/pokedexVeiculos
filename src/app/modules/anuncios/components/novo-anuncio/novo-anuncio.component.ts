@@ -86,13 +86,10 @@ export class NovoAnuncioComponent implements OnInit {
     
     this.getBase64(fileImage).subscribe(fileImagemBase64 => {
       this.imageBase64 = fileImagemBase64;
-      // console.log(this.imageBase64);
       this.novoAnuncio.veiculo.imagem = this.imageBase64;
-      if(this.formulario.invalid || this.imagemControl.invalid){
-        console.log('form novo anuncio inválido');
-        
-        return;
-      } 
+
+      if(this.formulario.invalid || this.imagemControl.invalid) return;
+      
       this.anunciosService.adicionar(this.novoAnuncio);
     });
 

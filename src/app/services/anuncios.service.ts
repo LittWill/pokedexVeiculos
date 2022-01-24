@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { IAnuncio } from '../interfaces/IAnuncio';
-import { IUsuario } from '../interfaces/IUsuario';
+import { IAnuncio, INovoAnuncio } from '../interfaces/IAnuncio';
 import { DialogService } from './dialog.service';
 import { HttpService } from './http.service';
 
@@ -20,7 +19,7 @@ export class AnunciosService {
     return this.httpService.getAnuncios();
   }
 
-  adicionar(novoAnuncio: any) {
+  adicionar(novoAnuncio: INovoAnuncio) {
     this.httpService.postNovoAnuncio(novoAnuncio).subscribe(res => {
       this.dialog.openDialog({titulo: 'Sucesso', mensagem: 'Anúncio adicionado.', botaoText: 'Ok'})
     },
