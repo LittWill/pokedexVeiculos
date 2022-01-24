@@ -9,7 +9,7 @@ import { IDialogData } from "../interfaces/IDialogData";
 })
 export class DialogService {
 
-  constructor(public dialog: MatDialog) { }
+  constructor(private dialog: MatDialog) { }
 
   openDialog(dataDialog: IDialogData) {
     this.dialog.open(DialogComponent, {data: dataDialog});

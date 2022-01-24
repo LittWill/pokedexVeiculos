@@ -8,11 +8,7 @@ import { IDialogData } from 'src/app/interfaces/IDialogData';
   styleUrls: ['./dialog.component.css']
 })
 export class DialogComponent implements OnInit {
-  // dialogData = {
-  //   titulo: '',
-  //   mensagem: ''
-  // }
-
+  
   constructor(
     public dialogRef: MatDialogRef<DialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: IDialogData,

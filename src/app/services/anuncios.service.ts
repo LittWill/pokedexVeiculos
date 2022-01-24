@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 
 import { IAnuncio } from '../interfaces/IAnuncio';
 import { IUsuario } from '../interfaces/IUsuario';
+import { DialogService } from './dialog.service';
 import { HttpService } from './http.service';
 
 @Injectable({
@@ -10,13 +11,22 @@ import { HttpService } from './http.service';
 })
 export class AnunciosService {
 
-  constructor(private httpService: HttpService) { }
+  constructor(
+    private httpService: HttpService,
+    private dialog: DialogService
+  ) { }
 
   listar(): Observable<IAnuncio[]> {
     return this.httpService.getAnuncios();
   }
 
   adicionar(novoAnuncio: any) {
-    this.httpService.postNovoAnuncio(novoAnuncio).subscribe(res => console.log(res));
+    this.httpService.postNovoAnuncio(novoAnuncio).subscribe(res => {
+      this.dialog.openDialog({titulo: 'Sucesso', mensagem: 'Anúncio adicionado.', botaoText: 'Ok'})
+    },
+      err => {
+        this.dialog.openDialog({titulo: 'Erro', mensagem: 'Desculpe ocorreu um problema, tente novamente.', botaoText: 'Fechar'})
+      }
+    );
   }
 }

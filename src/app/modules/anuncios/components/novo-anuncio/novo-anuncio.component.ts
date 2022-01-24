@@ -57,7 +57,7 @@ export class NovoAnuncioComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  getBase64(file: File): Observable<string> {
+  private getBase64(file: File): Observable<string> {
     const result = new ReplaySubject<string>(1);
     let reader = new FileReader();
     reader.readAsDataURL(file);
@@ -80,16 +80,21 @@ export class NovoAnuncioComponent implements OnInit {
       }
     };
     
-    const fileImage = this.imagemControl.value
+    const fileImage = <File>this.imagemControl.value;
+
+    if(!fileImage) return;
     
     this.getBase64(fileImage).subscribe(fileImagemBase64 => {
       this.imageBase64 = fileImagemBase64;
-      console.log(this.imageBase64);
+      // console.log(this.imageBase64);
       this.novoAnuncio.veiculo.imagem = this.imageBase64;
-      if(this.formulario.invalid || this.imagemControl.invalid) return;
+      if(this.formulario.invalid || this.imagemControl.invalid){
+        console.log('form novo anuncio inválido');
+        
+        return;
+      } 
       this.anunciosService.adicionar(this.novoAnuncio);
     });
 
-    
   }
 }
