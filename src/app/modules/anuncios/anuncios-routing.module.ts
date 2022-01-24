@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from 'src/app/guards/auth.guard.service';
 import { AnunciosComponent } from './anuncios.component';
 import { DetalhesComponent } from './components/detalhes/detalhes.component';
 
@@ -10,7 +11,7 @@ const routes: Routes = [
   {path: '', component: AnunciosComponent, children: [
     {path: '', component: ListaAnunciosComponent},
     {path: 'detalhes', component: DetalhesComponent},
-    {path: 'novo-anuncio', component: NovoAnuncioComponent},
+    {path: 'novo-anuncio', component: NovoAnuncioComponent, canActivate: [AuthGuard]},
   ]},
 ];
 

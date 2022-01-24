@@ -21,6 +21,7 @@ import { AnunciosService } from './services/anuncios.service';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { LoginComponent } from './components/login/login.component';
 import { LoginService } from './services/login.service';
+import { AuthGuard } from './guards/auth.guard.service';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { LoginService } from './services/login.service';
     LoaderService,
     AnunciosService,
     LoginService,
+    AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
