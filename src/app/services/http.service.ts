@@ -68,7 +68,7 @@ export class HttpService {
     else  // Erro ocorreu no lado do servidor
       errorMessage = `Código do erro: ${error.status}, ` + `menssagem: ${error.message}`;
 
-    console.log(errorMessage);
-    return throwError(errorMessage);
+    // console.log(errorMessage);
+    return throwError({status: error.status, mensagem: errorMessage});
   }
 }

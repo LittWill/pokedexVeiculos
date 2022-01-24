@@ -4,6 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 
 import { ELocalStorageKey } from '../enums/ELocalStorageKey';
 import { ICredenciaisDeAcesso } from '../interfaces/ICredenciaisDeAcesso';
+import { DialogService } from './dialog.service';
 import { HttpService } from './http.service';
 
 @Injectable({
@@ -14,7 +15,8 @@ export class LoginService {
 
   constructor(
     private httpService: HttpService,
-    private router: Router
+    private router: Router,
+    private dialog: DialogService
   ) { }
 
   private alterarEstadoDoMenu(): void {
@@ -26,9 +28,23 @@ export class LoginService {
       const { token, usuario } = data;
       localStorage.setItem(ELocalStorageKey.TOKEN, token);
       localStorage.setItem(ELocalStorageKey.USUARIO_LOGADO_INFO, JSON.stringify(usuario));
+      this.dialog.openDialog(
+        {
+          titulo: 'Login efetuado com sucesso', 
+          mensagem: `Estamos muito felizes por ver você aqui ${usuario.nome}.`, 
+          botaoText: 'Legal' 
+        }
+      );
       this.alterarEstadoDoMenu();
       this.router.navigate(['home']);
-    });
+    },
+      err => {
+        if (err.status === 401)
+          this.dialog.openDialog({ titulo: 'Erro de Login', mensagem: 'Email e/ou Senha incorretos', botaoText: 'Fechar' });
+        else
+          console.log(err);
+      }
+    );
   }
 
   deslogar(): void {

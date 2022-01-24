@@ -10,6 +10,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -22,6 +23,7 @@ import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { LoginComponent } from './components/login/login.component';
 import { LoginService } from './services/login.service';
 import { AuthGuard } from './guards/auth.guard.service';
+import { DialogComponent } from './components/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { AuthGuard } from './guards/auth.guard.service';
     FooterComponent,
     LoaderComponent,
     LoginComponent,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ import { AuthGuard } from './guards/auth.guard.service';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
+    MatDialogModule,
   ],
   // exports: [LoaderComponent],
   providers: [
