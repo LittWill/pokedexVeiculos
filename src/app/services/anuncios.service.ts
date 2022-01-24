@@ -19,20 +19,4 @@ export class AnunciosService {
   adicionar(novoAnuncio: any) {
     this.httpService.postNovoAnuncio(novoAnuncio).subscribe(res => console.log(res));
   }
-
-  upload(files: any) {
-    console.log(files);
-    
-    
-    
-   
-    // files = {
-    //   teste: 'teste'
-    // }
-    this.httpService.postImagem(files).subscribe(res => console.log(res));
-  }
-
- 
-
-  
 }

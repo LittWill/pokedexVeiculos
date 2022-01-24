@@ -39,9 +39,4 @@ export class HttpService {
   postNovoUsuario(novoUsuario: IUsuario): Observable<any>{
     return this.http.post<any>('https://pokedex-veiculos.herokuapp.com/usuarios', novoUsuario);
   }
-
-  postImagem(files: any) {
-    return this.http.post<any>('http://localhost:8080/upload', files);
-    //return this.http.post<any>('https://pokedex-veiculos-api.vercel.app/upload', files);
-  }
 }
