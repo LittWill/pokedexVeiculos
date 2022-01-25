@@ -9,11 +9,16 @@ import { HttpService } from './http.service';
   providedIn: 'root'
 })
 export class AnunciosService {
+  private _adicionadoComSucesso = false;
 
   constructor(
     private httpService: HttpService,
     private dialog: DialogService
   ) { }
+
+  get adicionadoComSucesso() {
+    return this._adicionadoComSucesso;
+  }
 
   listar(): Observable<IAnuncio[]> {
     return this.httpService.getAnuncios();
@@ -22,9 +27,11 @@ export class AnunciosService {
   adicionar(novoAnuncio: INovoAnuncio) {
     this.httpService.postNovoAnuncio(novoAnuncio).subscribe(res => {
       this.dialog.openDialog({titulo: 'Sucesso', mensagem: 'Anúncio adicionado.', botaoText: 'Ok'})
+      this._adicionadoComSucesso = true;
     },
       err => {
         this.dialog.openDialog({titulo: 'Erro', mensagem: 'Desculpe ocorreu um problema, tente novamente.', botaoText: 'Fechar'})
+        this._adicionadoComSucesso = false;
       }
     );
   }

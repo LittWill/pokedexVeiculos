@@ -17,7 +17,6 @@ export class HttpService {
 
   private sendAuthorizationToken() {
     this.token = <string>localStorage.getItem('TOKEN');
-    console.log(this.token);
     return new HttpHeaders().set('Authorization', this.token);
   }
 
