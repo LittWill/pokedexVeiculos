@@ -8,5 +8,5 @@
 }
 
 :host ::ng-deep .custom-spinner circle{   
-  stroke: #000000;
+  stroke: #3949AB;
 }

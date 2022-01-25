@@ -1,3 +1,7 @@
+h1 {
+  text-align: center;
+}
+
 .formulario-wrapper {
   display: flex;
   justify-content: center;
@@ -10,8 +14,9 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
-  border: black solid 1px;
+  border: #3949AB solid 1px;
   max-width: 424px;
+  margin-bottom: 20px;
 }
 
 .row {
