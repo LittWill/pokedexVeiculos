@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { IAnuncio, INovoAnuncio } from '../interfaces/IAnuncio';
@@ -13,6 +14,7 @@ export class AnunciosService {
 
   constructor(
     private httpService: HttpService,
+    private router: Router,
     private dialog: DialogService
   ) { }
 
@@ -26,6 +28,7 @@ export class AnunciosService {
 
   adicionar(novoAnuncio: INovoAnuncio) {
     this.httpService.postNovoAnuncio(novoAnuncio).subscribe(res => {
+      this.router.navigate(['home']);
       this.dialog.openDialog({titulo: 'Sucesso', mensagem: 'Anúncio adicionado.', botaoText: 'Ok'})
       this._adicionadoComSucesso = true;
     },
