@@ -1,5 +1,7 @@
+@import '../../../custom-theme.scss';
+
 .footer {
-  background-color: #3949AB;
+  background-color: $color-primary;
   color: aliceblue;
   text-align: center;
   padding: 10px;

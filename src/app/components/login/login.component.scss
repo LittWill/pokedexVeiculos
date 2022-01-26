@@ -1,3 +1,5 @@
+@import '../../../custom-theme.scss';
+
 button {
   width: 100%;
 }
@@ -14,7 +16,7 @@ button {
   display: flex;
   flex-direction: column;
   padding: 20px;
-  border: #3949AB solid 1px;
+  border: $color-primary solid 1px;
   max-width: 424px;
 }
 

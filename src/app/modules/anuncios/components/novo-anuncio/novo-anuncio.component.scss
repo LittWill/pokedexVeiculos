@@ -1,3 +1,5 @@
+@import '../../../../../custom-theme.scss';
+
 h1 {
   text-align: center;
 }
@@ -14,7 +16,7 @@ h1 {
   display: flex;
   flex-direction: column;
   padding: 20px;
-  border: #3949AB solid 1px;
+  border: $color-primary solid 1px;
   max-width: 424px;
   margin-bottom: 20px;
 }
