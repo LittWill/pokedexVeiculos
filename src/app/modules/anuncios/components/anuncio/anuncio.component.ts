@@ -12,7 +12,6 @@ import { IAnuncio } from 'src/app/interfaces/IAnuncio';
 export class AnuncioComponent implements OnInit {
   @Input() anuncio!: IAnuncio;
  
-
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -22,5 +21,4 @@ export class AnuncioComponent implements OnInit {
     localStorage.setItem(ELocalStorageKey.ANUNCIO, JSON.stringify(anuncio));
     this.router.navigate(['anuncios/detalhes']);
   }
-
 }

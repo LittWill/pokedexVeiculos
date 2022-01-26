@@ -3,23 +3,43 @@ import { Observable } from 'rxjs';
 import { HttpService } from './http.service';
 
 import { IUsuario } from '../interfaces/IUsuario';
+import { DialogService } from './dialog.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
 
-  constructor(private httpService: HttpService) { }
+  constructor(
+    private httpService: HttpService,
+    private dialog: DialogService
+  ) { }
 
-  listarUsuarios(): Observable<IUsuario[]>{
+  listarUsuarios(): Observable<IUsuario[]> {
     return this.httpService.getUsuarios();
   }
 
-  adicionarNovoUsuario(novoUsuario: IUsuario){
+  adicionarNovoUsuario(novoUsuario: IUsuario) {
     return this.httpService.postNovoUsuario(novoUsuario).subscribe(res => {
-      const{statusCode, erros} = res;
-      if(statusCode === 201) alert('Novo usuário adicionado com sucesso'); else alert('Erro ao adicionar novo usuário.');
-      if(erros.length > 0) console.log('Erros: ', erros);
-    });
+      const { statusCode } = res;
+      if (statusCode === 201)
+        this.dialog.openDialog(
+          {
+            titulo: 'Sucesso',
+            mensagem: 'Novo usuário adicionado com sucesso',
+            botaoText: 'Ok'
+          }
+        );
+    },
+      ()=> {
+        this.dialog.openDialog(
+          {
+            titulo: 'Erro',
+            mensagem: 'Não foi possível adiciona-lo agora. Por favor tente novamente.',
+            botaoText: 'Fechar'
+          }
+        );
+      }
+    );
   }
 }
