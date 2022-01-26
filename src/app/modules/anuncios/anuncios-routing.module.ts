@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: '', component: AnunciosComponent, children: [
     {path: '', component: ListaAnunciosComponent},
     {path: 'detalhes', component: DetalhesComponent},
-    {path: 'novo-anuncio', component: NovoAnuncioComponent, canActivate: [AuthGuard]},
+    {path: 'novo-anuncio', component: NovoAnuncioComponent, canActivate: [AuthGuard] },
   ]},
 ];
 

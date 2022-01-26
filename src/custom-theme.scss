@@ -33,6 +33,7 @@ $pokedexVeiculos-theme: mat.define-light-theme((
 // that you are using.
 @include mat.all-component-themes($pokedexVeiculos-theme);
 
+//Exporta as cores do material-theme para os componentes que não são do material.
 $color-config:    mat.get-color-config($pokedexVeiculos-theme);
 $color-primary: map.get($color-config, 'primary', 500);
 
