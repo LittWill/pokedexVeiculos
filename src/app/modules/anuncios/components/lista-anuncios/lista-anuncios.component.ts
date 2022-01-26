@@ -6,7 +6,7 @@ import { AnunciosService } from 'src/app/services/anuncios.service';
 @Component({
   selector: 'app-lista-anuncios',
   templateUrl: './lista-anuncios.component.html',
-  styleUrls: ['./lista-anuncios.component.css']
+  styleUrls: ['./lista-anuncios.component.scss']
 })
 export class ListaAnunciosComponent implements OnInit {
   listaAnuncios: IAnuncio[] = [];

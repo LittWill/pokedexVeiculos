@@ -5,7 +5,7 @@ import { LoaderService } from 'src/app/services/loader.service';
 @Component({
   selector: 'loader',
   templateUrl: './loader.component.html',
-  styleUrls: ['./loader.component.css']
+  styleUrls: ['./loader.component.scss']
 })
 export class LoaderComponent implements OnInit {
   isLoading$: BehaviorSubject<boolean>;

@@ -7,7 +7,7 @@ import { LoginService } from '../../services/login.service'
 @Component({
   selector: 'menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
   private _estaLogado = false;

@@ -6,7 +6,7 @@ import { IAnuncio } from 'src/app/interfaces/IAnuncio';
 @Component({
   selector: 'detalhes',
   templateUrl: './detalhes.component.html',
-  styleUrls: ['./detalhes.component.css']
+  styleUrls: ['./detalhes.component.scss']
 })
 export class DetalhesComponent implements OnInit {
   anuncio: IAnuncio;

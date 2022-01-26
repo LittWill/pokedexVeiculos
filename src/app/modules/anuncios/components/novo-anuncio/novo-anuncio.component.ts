@@ -10,7 +10,7 @@ import { AnunciosService } from 'src/app/services/anuncios.service';
 @Component({
   selector: 'novo-anuncio',
   templateUrl: './novo-anuncio.component.html',
-  styleUrls: ['./novo-anuncio.component.css']
+  styleUrls: ['./novo-anuncio.component.scss']
 })
 export class NovoAnuncioComponent {
   formulario: FormGroup;
