@@ -22,12 +22,24 @@ export class AnunciosService {
   }
 
   adicionar(novoAnuncio: INovoAnuncio) {
-    this.httpService.postNovoAnuncio(novoAnuncio).subscribe(res => {
+    this.httpService.postNovoAnuncio(novoAnuncio).subscribe(() => {
       this.router.navigate(['home']);
-      this.dialog.openDialog({titulo: 'Sucesso', mensagem: 'Anúncio adicionado.', botaoText: 'Ok'});
+      this.dialog.openDialog(
+        {
+          titulo: 'Sucesso',
+          mensagem: 'Anúncio adicionado.',
+          botaoText: 'Ok'
+        }
+      );
     },
-      err => {
-        this.dialog.openDialog({titulo: 'Erro', mensagem: 'Desculpe ocorreu um problema, tente novamente.', botaoText: 'Fechar'});
+      () => {
+        this.dialog.openDialog(
+          {
+            titulo: 'Erro',
+            mensagem: 'Desculpe ocorreu um problema, tente novamente.',
+            botaoText: 'Fechar'
+          }
+        );
       }
     );
   }

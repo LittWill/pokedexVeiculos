@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ELocalStorageKey } from 'src/app/enums/ELocalStorageKey';
 
 import { IAnuncio } from 'src/app/interfaces/IAnuncio';
 
@@ -20,12 +21,12 @@ export class DetalhesComponent implements OnInit {
   }
 
   voltar() {
-    localStorage.removeItem('ANUNCIO');
+    localStorage.removeItem(ELocalStorageKey.ANUNCIO);
     this.router.navigate(['anuncios']);
   }
 
   private getLocalStorage(): IAnuncio {
-    return JSON.parse(<string>localStorage.getItem('ANUNCIO'));
+    return JSON.parse(<string>localStorage.getItem(ELocalStorageKey.ANUNCIO));
   }
 
 }

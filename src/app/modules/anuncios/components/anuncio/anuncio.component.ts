@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ELocalStorageKey } from 'src/app/enums/ELocalStorageKey';
 
 import { IAnuncio } from 'src/app/interfaces/IAnuncio';
 
@@ -18,8 +19,7 @@ export class AnuncioComponent implements OnInit {
   }
 
   abrirDetalhes(anuncio: IAnuncio): void {
-    localStorage.setItem('ANUNCIO', JSON.stringify(anuncio))
-    console.log(anuncio);
+    localStorage.setItem(ELocalStorageKey.ANUNCIO, JSON.stringify(anuncio));
     this.router.navigate(['anuncios/detalhes']);
   }
 
