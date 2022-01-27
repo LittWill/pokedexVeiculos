@@ -36,7 +36,10 @@
 
       <mat-form-field class="input" appearance="fill">
         <mat-label>Senha</mat-label>
-        <input type="password" matInput formControlName="senha">
+        <input matInput [type]="hide ? 'password' : 'text'"  formControlName="senha">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
       </mat-form-field>
       <button mat-raised-button color="primary" (click)="efetuarRegistro()">Registrar</button>
     </form>

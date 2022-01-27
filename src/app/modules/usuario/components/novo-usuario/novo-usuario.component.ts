@@ -12,6 +12,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 export class NovoUsuarioComponent implements OnInit {
   formulario: FormGroup;
   novoUsuario: IUsuario;
+  hide = true;
 
   constructor(
     private formBuilder: FormBuilder,

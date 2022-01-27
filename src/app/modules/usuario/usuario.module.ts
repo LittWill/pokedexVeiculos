@@ -10,6 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 
 import { UsuarioComponent } from './usuario.component';
 import { NovoUsuarioComponent } from './components/novo-usuario/novo-usuario.component';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { NovoUsuarioComponent } from './components/novo-usuario/novo-usuario.com
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
+    MatIconModule
   ]
 })
 export class UsuarioModule { }

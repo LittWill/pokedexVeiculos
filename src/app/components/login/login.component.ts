@@ -12,6 +12,7 @@ import { LoginService } from 'src/app/services/login.service';
 export class LoginComponent implements OnInit {
   formulario: FormGroup;
   credenciais: ICredenciaisDeAcesso;
+  hide = true;
 
   constructor(
     private formBuilder: FormBuilder,
