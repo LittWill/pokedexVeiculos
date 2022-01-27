@@ -24,6 +24,7 @@ import { LoginComponent } from './components/login/login.component';
 import { LoginService } from './services/login.service';
 import { AuthGuard } from './guards/auth.guard.service';
 import { DialogComponent } from './components/dialog/dialog.component';
+import { PesquisaComponent } from './components/pesquisa/pesquisa.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
     LoaderComponent,
     LoginComponent,
     DialogComponent,
+    PesquisaComponent,
   ],
   imports: [
     BrowserModule,
