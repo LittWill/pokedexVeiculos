@@ -1,9 +1,6 @@
-@import '../../../custom-theme.scss';
-
 .menu {
   display: flex;
   justify-content: space-between;
-  background-color: $color-primary;
   color: aliceblue;
   padding: 10px 0 10px 0;
   position: fixed;

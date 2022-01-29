@@ -35,5 +35,18 @@ $pokedexVeiculos-theme: mat.define-light-theme((
 
 //Exporta as cores do material-theme para os componentes que não são do material.
 $color-config:    mat.get-color-config($pokedexVeiculos-theme);
+
 $color-primary: map.get($color-config, 'primary', 500);
+
+.bg-color-primary {
+  background-color: $color-primary;
+}
+
+.border-color-primary {
+  border: $color-primary solid 1px;
+}
+
+:host ::ng-deep .custom-spinner circle {//cor do spinner
+  stroke: $color-primary;
+}
 

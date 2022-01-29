@@ -1,5 +1,3 @@
-@import '../../../custom-theme.scss';
-
 .spinner-wrapper {
   background-color: #ffffff;
   display: flex;
@@ -7,8 +5,4 @@
   justify-content: center;
   z-index: 5;
   height: 100vh;
-}
-
-:host ::ng-deep .custom-spinner circle{   
-  stroke: $color-primary;
 }
