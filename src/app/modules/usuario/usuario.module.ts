@@ -8,10 +8,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
+import { IConfig, NgxMaskModule } from 'ngx-mask';
+
 import { UsuarioComponent } from './usuario.component';
 import { NovoUsuarioComponent } from './components/novo-usuario/novo-usuario.component';
 import { MatIconModule } from '@angular/material/icon';
 
+export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    NgxMaskModule.forRoot(),
   ]
 })
 export class UsuarioModule { }

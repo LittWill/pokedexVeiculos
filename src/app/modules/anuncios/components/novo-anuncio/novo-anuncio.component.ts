@@ -1,10 +1,11 @@
-import { MaxSizeValidator } from '@angular-material-components/file-input';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Observable, ReplaySubject } from 'rxjs';
-import { INovoAnuncio } from 'src/app/interfaces/IAnuncio';
 
-// import { IAnuncio } from 'src/app/interfaces/IAnuncio';
+import { MaxSizeValidator } from '@angular-material-components/file-input';
+import { IConfig } from 'ngx-mask';
+
+import { INovoAnuncio } from 'src/app/interfaces/IAnuncio';
 import { AnunciosService } from 'src/app/services/anuncios.service';
 
 @Component({
@@ -22,7 +23,9 @@ export class NovoAnuncioComponent {
   imagemControl: FormControl;
   public imagens: any;
   maxSize = 16;
-  imageBase64 = "";
+  maskConfig: Partial<IConfig> = {
+    validation: false,
+  };
 
   constructor(
     private formBuilder: FormBuilder,
@@ -75,7 +78,7 @@ export class NovoAnuncioComponent {
   }
 
   efetuarRegistro() {
-    if(this.formulario.invalid || this.imagemControl.invalid) return;
+    if (this.formulario.invalid || this.imagemControl.invalid) return;
     const fileImage = <File>this.imagemControl.value;
     this.preencherNovoAnuncio();
     this.getBase64(fileImage).subscribe(fileImagemBase64 => {

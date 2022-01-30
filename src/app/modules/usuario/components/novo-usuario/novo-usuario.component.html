@@ -6,18 +6,27 @@
         <mat-form-field class="input margin-right" appearance="fill">
           <mat-label>Nome</mat-label>
           <input type="text" matInput formControlName="nome">
+          <mat-error class="erro-mensagem" *ngIf="formulario.controls.nome.hasError('required')">
+            Nome é <strong>obrigatório</strong>.
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field class="input" appearance="fill">
           <mat-label>Sobrenome</mat-label>
           <input type="text" matInput formControlName="sobrenome">
+          <mat-error class="erro-mensagem" *ngIf="formulario.controls.sobrenome.hasError('required')">
+            Sobrenome é <strong>obrigatório</strong>.
+          </mat-error>
         </mat-form-field>
       </div>
 
       <div class="row">
         <mat-form-field class="input margin-right" appearance="fill">
           <mat-label>Celular</mat-label>
-          <input type="tel" matInput formControlName="telefone">
+          <input type="tel" matInput formControlName="telefone" placeholder="99999-9999" mask="00000-0000">
+          <mat-error class="erro-mensagem" *ngIf="formulario.controls.telefone.hasError('required')">
+            Celular é <strong>obrigatório</strong>.
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field class="input" appearance="fill">
@@ -26,20 +35,30 @@
             <mat-option value="1">Anunciante</mat-option>
             <mat-option value="2">Comprador</mat-option>
           </mat-select>
+          <mat-error class="erro-mensagem" *ngIf="formulario.controls.email.hasError('required')">
+            Perfil é <strong>obrigatório</strong>.
+          </mat-error>
         </mat-form-field>
       </div>
 
       <mat-form-field class="input" appearance="fill">
         <mat-label>Email</mat-label>
         <input type="email" matInput formControlName="email">
+        <mat-error class="erro-mensagem" *ngIf="formulario.controls.email.hasError('required')">
+          Email é <strong>obrigatório</strong>.
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field class="input" appearance="fill">
         <mat-label>Senha</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'"  formControlName="senha">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="senha">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
+        <mat-error class="erro-mensagem" *ngIf="formulario.controls.senha.hasError('required')">
+          Senha é <strong>obrigatório</strong>.
+        </mat-error>
       </mat-form-field>
       <button mat-raised-button color="primary" (click)="efetuarRegistro()">Registrar</button>
     </form>

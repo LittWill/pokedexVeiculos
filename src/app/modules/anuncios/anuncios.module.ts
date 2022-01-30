@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
 import { NgxMatFileInputModule } from '@angular-material-components/file-input';
+import { IConfig, NgxMaskModule } from 'ngx-mask';
 
 import { LOCALE_ID } from '@angular/core';
 import localePt from '@angular/common/locales/pt';
@@ -23,7 +24,7 @@ import { DetalhesComponent } from './components/detalhes/detalhes.component';
 import { AnunciosComponent } from './anuncios.component';
 import { NovoAnuncioComponent } from './components/novo-anuncio/novo-anuncio.component';
 
-
+export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { NovoAnuncioComponent } from './components/novo-anuncio/novo-anuncio.com
     MatSelectModule,
     NgxMatFileInputModule,
     AnunciosRoutingModule,
+    NgxMaskModule.forRoot(),
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-br' },

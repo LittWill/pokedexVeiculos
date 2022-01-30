@@ -1,6 +1,6 @@
 <h1>Novo Anúncio</h1>
 <div class="formulario-wrapper">
-  <div class="box-cadastro bg-color-primary">
+  <div class="box-cadastro border-color-primary">
     <form class="formulario" [formGroup]="formulario">
       <div class="row">
         <mat-form-field class="input margin-right" appearance="fill">
@@ -13,7 +13,7 @@
 
         <mat-form-field class="input" appearance="fill">
           <mat-label>Preço</mat-label>
-          <input type="text" matInput formControlName="valor">
+          <input type="text" matInput formControlName="valor" prefix="R$ " mask="separator" thousandSeparator=".">
           <mat-error class="erro-mensagem" *ngIf="formulario.controls.valor.hasError('required')">
             Preço é <strong>obrigatório</strong>.
           </mat-error>
@@ -23,7 +23,7 @@
       <div class="row">
         <mat-form-field class="input margin-right" appearance="fill">
           <mat-label>Ano</mat-label>
-          <input type="text" matInput formControlName="ano">
+          <input type="text" matInput formControlName="ano" mask="0000">
           <mat-error class="erro-mensagem" *ngIf="formulario.controls.ano.hasError('required')">
             Ano é <strong>obrigatório</strong>.
           </mat-error>
@@ -46,7 +46,7 @@
 
       <mat-form-field class="input" appearance="fill">
         <mat-label>Km</mat-label>
-        <input type="text" matInput formControlName="km">
+        <input type="text" matInput formControlName=" km" suffix="Km" mask="separator" thousandSeparator=".">
         <mat-error class="erro-mensagem" *ngIf="formulario.controls.km.hasError('required')">
           Km é <strong>obrigatório</strong>.
         </mat-error>
