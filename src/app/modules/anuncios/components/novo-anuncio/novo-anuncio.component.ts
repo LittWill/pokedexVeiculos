@@ -54,21 +54,11 @@ export class NovoAnuncioComponent {
       veiculo: {
         ano: this.formulario.value.ano,
         cor: this.formulario.value.cor,
-        imagem: '',
         km: this.formulario.value.km,
         marcaId: this.formulario.value.marcaId,
         modelo: this.formulario.value.modelo,
       }
     };
-  }
-
-  private getBase64(file: File): Observable<string> {
-    const result = new ReplaySubject<string>(1);
-    let reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => result.next(reader.result?.toString());
-    reader.onerror = (error) => console.log('Error: ', error);
-    return result;
   }
 
   private limparFormulario() {
@@ -78,13 +68,16 @@ export class NovoAnuncioComponent {
   }
 
   efetuarRegistro() {
-    if (this.formulario.invalid || this.imagemControl.invalid) return;
-    const fileImage = <File>this.imagemControl.value;
+    // if (this.formulario.invalid || this.imagemControl.invalid) return;
+    // const fileImage = <File>this.imagemControl.value;
+    console.log(this.novoAnuncio);
+    this.imagemControl.value
+    
     this.preencherNovoAnuncio();
-    this.getBase64(fileImage).subscribe(fileImagemBase64 => {
-      this.novoAnuncio.veiculo.imagem = fileImagemBase64;
-      this.anunciosService.adicionar(this.novoAnuncio);
-      this.limparFormulario();
-    });
+
+    console.log('após:', this.novoAnuncio);
+    console.log('após:', this.novoAnuncio);
+    this.anunciosService.adicionar(this.novoAnuncio, this.imagemControl.value);
+    this.limparFormulario();
   }
 }

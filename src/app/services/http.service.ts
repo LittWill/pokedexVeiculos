@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { ELocalStorageKey } from '../enums/ELocalStorageKey';
 
 import { IAnuncio } from '../interfaces/IAnuncio';
 import { ICredenciaisDeAcesso } from '../interfaces/ICredenciaisDeAcesso';
@@ -16,7 +17,7 @@ export class HttpService {
   constructor(private http: HttpClient) { }
 
   private sendAuthorizationToken() {
-    this.token = <string>localStorage.getItem('TOKEN');
+    this.token = <string>localStorage.getItem(ELocalStorageKey.TOKEN);
     return new HttpHeaders().set('Authorization', this.token);
   }
 
@@ -29,7 +30,15 @@ export class HttpService {
   }
 
   postNovoAnuncio(novoAnuncio: any): Observable<any> {
-    return this.http.post<any>('https://pokedex-veiculos.herokuapp.com/anuncios', novoAnuncio, { headers: this.sendAuthorizationToken() })
+    return this.http.post<any>('https://pokedex-veiculos-development.herokuapp.com/anuncios', novoAnuncio, { headers: this.sendAuthorizationToken() })
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      );
+  }
+
+  postImagemNovoAnuncio(imagem: File): Observable<any> {
+    return this.http.post<any>('https://pokedex-veiculos-development.herokuapp.com/anuncios/imagem', imagem, { headers: this.sendAuthorizationToken() })
       .pipe(
         retry(2),
         catchError(this.handleError)

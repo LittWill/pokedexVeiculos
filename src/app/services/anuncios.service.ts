@@ -21,25 +21,35 @@ export class AnunciosService {
     return this.httpService.getAnuncios();
   }
 
-  adicionar(novoAnuncio: INovoAnuncio) {
+  adicionar(novoAnuncio: INovoAnuncio, imagemAnuncio: File): void {
     this.httpService.postNovoAnuncio(novoAnuncio).subscribe(() => {
-      this.router.navigate(['home']);
-      this.dialog.openDialog(
-        {
-          titulo: 'Sucesso',
-          mensagem: 'Anúncio adicionado.',
-          botaoText: 'Ok'
-        }
+      this.httpService.postImagemNovoAnuncio(imagemAnuncio).subscribe(() => {
+        this.router.navigate(['home']);
+        this.exibirMensagemSucesso();
+      },
+        () => this.exibirMensagemErro()
       );
     },
-      () => {
-        this.dialog.openDialog(
-          {
-            titulo: 'Erro',
-            mensagem: 'Desculpe ocorreu um problema, tente novamente.',
-            botaoText: 'Fechar'
-          }
-        );
+      () => this.exibirMensagemErro()
+    );
+  };
+
+  private exibirMensagemSucesso(): void {
+    this.dialog.openDialog(
+      {
+        titulo: 'Sucesso',
+        mensagem: 'Anúncio adicionado.',
+        botaoText: 'Ok'
+      }
+    );
+  }
+
+  private exibirMensagemErro(): void {
+    this.dialog.openDialog(
+      {
+        titulo: 'Erro',
+        mensagem: 'Desculpe ocorreu um problema, tente novamente.',
+        botaoText: 'Fechar'
       }
     );
   }

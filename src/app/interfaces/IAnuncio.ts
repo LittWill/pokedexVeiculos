@@ -18,7 +18,6 @@ export interface INovoAnuncio {
   veiculo: {
     ano: number,
     cor: string,
-    imagem: string,
     km: number,
     marcaId: number,
     modelo: string,

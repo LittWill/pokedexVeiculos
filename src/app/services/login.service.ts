@@ -25,7 +25,7 @@ export class LoginService {
 
   logar(credenciais: ICredenciaisDeAcesso): void {
     this.httpService.postLogin(credenciais).subscribe(data => {
-      const { token, usuario } = data;
+      const { token, usuario } = data.resposta;
       localStorage.setItem(ELocalStorageKey.TOKEN, token);
       localStorage.setItem(ELocalStorageKey.USUARIO_LOGADO_INFO, JSON.stringify(usuario));
       this.dialog.openDialog(
