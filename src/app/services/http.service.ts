@@ -30,15 +30,15 @@ export class HttpService {
   }
 
   postNovoAnuncio(novoAnuncio: any): Observable<any> {
-    return this.http.post<any>('https://pokedex-veiculos-development.herokuapp.com/anuncios', novoAnuncio, { headers: this.sendAuthorizationToken() })
+    return this.http.post<any>('https://pokedex-veiculos.herokuapp.com/anuncios', novoAnuncio, { headers: this.sendAuthorizationToken() })
       .pipe(
         retry(2),
         catchError(this.handleError)
       );
   }
 
-  postImagemNovoAnuncio(imagem: File): Observable<any> {
-    return this.http.post<any>('https://pokedex-veiculos-development.herokuapp.com/anuncios/imagem', imagem, { headers: this.sendAuthorizationToken() })
+  postImagemNovoAnuncio(file: FormData): Observable<any> {
+    return this.http.post<FormData>('https://pokedex-veiculos.herokuapp.com/anuncios/imagem', file, { headers: this.sendAuthorizationToken() })
       .pipe(
         retry(2),
         catchError(this.handleError)

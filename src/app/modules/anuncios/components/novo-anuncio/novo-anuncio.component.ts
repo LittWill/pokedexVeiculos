@@ -68,14 +68,9 @@ export class NovoAnuncioComponent {
 
   efetuarRegistro(): void {
     // if (this.formulario.invalid || this.imagemControl.invalid) return;
-    // const fileImage = <File>this.imagemControl.value;
-    console.log(this.novoAnuncio);
-    this.imagemControl.value
-
     this.preencherNovoAnuncio();
-
-    console.log('após:', this.novoAnuncio);
-    console.log('após:', this.novoAnuncio);
+    console.log(this.novoAnuncio);
+    console.log(this.imagemControl.value);
     this.anunciosService.adicionar(this.novoAnuncio, this.imagemControl.value);
     this.limparFormulario();
   }

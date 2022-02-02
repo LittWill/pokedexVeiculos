@@ -23,7 +23,9 @@ export class AnunciosService {
 
   adicionar(novoAnuncio: INovoAnuncio, imagemAnuncio: File): void {
     this.httpService.postNovoAnuncio(novoAnuncio).subscribe(() => {
-      this.httpService.postImagemNovoAnuncio(imagemAnuncio).subscribe(() => {
+      const formData = new FormData();
+      formData.append('imagem', imagemAnuncio);
+      this.httpService.postImagemNovoAnuncio(formData).subscribe(() => {
         this.router.navigate(['home']);
         this.exibirMensagemSucesso();
       },
