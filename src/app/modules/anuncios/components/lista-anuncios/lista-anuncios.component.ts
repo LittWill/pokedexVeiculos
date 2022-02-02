@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ELocalStorageKey } from 'src/app/enums/ELocalStorageKey';
 
 import { IAnuncio } from 'src/app/interfaces/IAnuncio';
 import { AnunciosService } from 'src/app/services/anuncios.service';

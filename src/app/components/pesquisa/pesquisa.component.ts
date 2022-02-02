@@ -1,15 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'pesquisa',
   templateUrl: './pesquisa.component.html',
   styleUrls: ['./pesquisa.component.scss']
 })
-export class PesquisaComponent implements OnInit {
+export class PesquisaComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

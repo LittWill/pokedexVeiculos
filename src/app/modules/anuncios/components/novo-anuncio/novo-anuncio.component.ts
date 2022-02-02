@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { Observable, ReplaySubject } from 'rxjs';
 
-import { MaxSizeValidator } from '@angular-material-components/file-input';
+// import { MaxSizeValidator } from '@angular-material-components/file-input';
 import { IConfig } from 'ngx-mask';
 
 import { INovoAnuncio } from 'src/app/interfaces/IAnuncio';
@@ -47,7 +46,7 @@ export class NovoAnuncioComponent {
     this.preencherNovoAnuncio();
   }
 
-  private preencherNovoAnuncio() {
+  private preencherNovoAnuncio(): void {
     this.novoAnuncio = {
       descricao: this.formulario.value.descricao,
       valor: this.formulario.value.valor,
@@ -61,18 +60,18 @@ export class NovoAnuncioComponent {
     };
   }
 
-  private limparFormulario() {
+  private limparFormulario(): void {
     this.formulario.reset();
     this.imagemControl.reset();
     this.formulario.markAsTouched();
   }
 
-  efetuarRegistro() {
+  efetuarRegistro(): void {
     // if (this.formulario.invalid || this.imagemControl.invalid) return;
     // const fileImage = <File>this.imagemControl.value;
     console.log(this.novoAnuncio);
     this.imagemControl.value
-    
+
     this.preencherNovoAnuncio();
 
     console.log('após:', this.novoAnuncio);

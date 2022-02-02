@@ -19,12 +19,12 @@ export class LoaderService {
     this.exibirConteudo();
   }
 
-  private esconderConteudo() {
+  private esconderConteudo(): void {
     const wrapper = document.querySelector('.wrapper');
     wrapper?.classList.add('esconder');
   }
 
-  private exibirConteudo() {
+  private exibirConteudo(): void {
     const wrapper = document.querySelector('.wrapper');
     wrapper?.classList.remove('esconder');
   }

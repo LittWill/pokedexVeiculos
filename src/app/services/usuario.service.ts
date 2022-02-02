@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { HttpService } from './http.service';
 
 import { IUsuario } from '../interfaces/IUsuario';
@@ -19,7 +19,7 @@ export class UsuarioService {
     return this.httpService.getUsuarios();
   }
 
-  adicionarNovoUsuario(novoUsuario: IUsuario) {
+  adicionarNovoUsuario(novoUsuario: IUsuario): Subscription {
     return this.httpService.postNovoUsuario(novoUsuario).subscribe(res => {
       const { statusCode } = res;
       if (statusCode === 201)

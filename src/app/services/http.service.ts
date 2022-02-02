@@ -16,7 +16,7 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
-  private sendAuthorizationToken() {
+  private sendAuthorizationToken(): HttpHeaders {
     this.token = <string>localStorage.getItem(ELocalStorageKey.TOKEN);
     return new HttpHeaders().set('Authorization', this.token);
   }

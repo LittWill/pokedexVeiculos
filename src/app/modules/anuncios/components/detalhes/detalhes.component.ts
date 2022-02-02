@@ -12,12 +12,12 @@ import { IAnuncio } from 'src/app/interfaces/IAnuncio';
 export class DetalhesComponent implements OnInit {
   anuncio: IAnuncio;
 
-  constructor(private router: Router) { 
+  constructor(private router: Router) {
     this.anuncio = this.getLocalStorage();
   }
 
   ngOnInit(): void {
-    if(!this.anuncio) this.voltar();
+    if (!this.anuncio) this.voltar();
   }
 
   voltar() {

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ELocalStorageKey } from 'src/app/enums/ELocalStorageKey';
-import { IUsuario } from 'src/app/interfaces/IUsuario';
 
 import { LoginService } from '../../services/login.service'
 

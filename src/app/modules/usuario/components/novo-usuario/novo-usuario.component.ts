@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { IUsuario } from 'src/app/interfaces/IUsuario';
@@ -9,7 +9,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   templateUrl: './novo-usuario.component.html',
   styleUrls: ['./novo-usuario.component.scss']
 })
-export class NovoUsuarioComponent implements OnInit {
+export class NovoUsuarioComponent {
   formulario: FormGroup;
   novoUsuario: IUsuario;
   hide = true;
@@ -29,10 +29,7 @@ export class NovoUsuarioComponent implements OnInit {
     this.novoUsuario = this.formulario.value;
   }
 
-  ngOnInit(): void {
-  }
-
-  efetuarRegistro() {
+  efetuarRegistro(): void {
     this.novoUsuario = this.formulario.value;
     if (this.formulario.invalid) return;
     this.usuarioService.adicionarNovoUsuario(this.novoUsuario);

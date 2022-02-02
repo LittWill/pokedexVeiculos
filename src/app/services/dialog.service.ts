@@ -11,7 +11,7 @@ export class DialogService {
 
   constructor(private dialog: MatDialog) { }
 
-  openDialog(dataDialog: IDialogData) {
+  openDialog(dataDialog: IDialogData): void {
     this.dialog.open(DialogComponent, {data: dataDialog});
   }
 }
