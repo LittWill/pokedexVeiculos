@@ -9,6 +9,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 import { IConfig, NgxMaskModule } from 'ngx-mask';
@@ -44,6 +45,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    MatAutocompleteModule,
     NgxMatFileInputModule,
     AnunciosRoutingModule,
     NgxMaskModule.forRoot(),

@@ -31,14 +31,13 @@
 
         <mat-form-field class="input" appearance="fill">
           <mat-label>Selecione a marca</mat-label>
-          <mat-select formControlName="marcaId">
-            <mat-option value="1">Volkswagen</mat-option>
-            <mat-option value="2">Nissan</mat-option>
-            <mat-option value="3">Porshe</mat-option>
-            <mat-option value="4">Honda</mat-option>
-            <mat-option value="4">Ferrari</mat-option>
-          </mat-select>
-          <mat-error class="erro-mensagem" *ngIf="formulario.controls.marcaId.hasError('required')">
+          <input matInput type="text" aria-label="Selecione a marca" [formControl]="marcaIdControl" [matAutocomplete]="auto">
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option.nome">
+              {{option.nome}}
+            </mat-option>
+          </mat-autocomplete>
+          <mat-error class="erro-mensagem" *ngIf="marcaIdControl.errors">
             Marca é <strong>obrigatório</strong>.
           </mat-error>
         </mat-form-field>

@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 
 // import { MaxSizeValidator } from '@angular-material-components/file-input';
-import { IConfig } from 'ngx-mask';
 
 import { INovoAnuncio } from 'src/app/interfaces/IAnuncio';
 import { AnunciosService } from 'src/app/services/anuncios.service';
@@ -12,19 +13,22 @@ import { AnunciosService } from 'src/app/services/anuncios.service';
   templateUrl: './novo-anuncio.component.html',
   styleUrls: ['./novo-anuncio.component.scss']
 })
-export class NovoAnuncioComponent {
+export class NovoAnuncioComponent implements OnInit {
   formulario: FormGroup;
   novoAnuncio!: INovoAnuncio;
-  // color: ThemePalette = 'primary';
-  disabled: boolean = false;
-  multiple: boolean = false;
-  accept: string = '.png, .jpg, .jpeg';
   imagemControl: FormControl;
-  public imagens: any;
-  maxSize = 16;
-  maskConfig: Partial<IConfig> = {
-    validation: false,
-  };
+  marcaIdControl: FormControl;
+
+  //ngx_mat_file_input_config 
+  // color: ThemePalette = 'primary',
+  disabled = false;
+  multiple = false;
+  accept = '.png, .jpg, .jpeg';
+  // maxSize = 16;
+
+  //mat-autocomplete-config
+  options = [{ id: 4, nome: 'Honda' }, { id: 14, nome: 'Toyota' }];
+  filteredOptions = new Observable<any[]>();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -36,17 +40,38 @@ export class NovoAnuncioComponent {
       ano: [null, [Validators.required,]],
       cor: [null, [Validators.required,]],
       km: [null, [Validators.required,]],
-      marcaId: [null, [Validators.required,]],
       modelo: [null, [Validators.required,]],
     });
-    this.imagemControl = new FormControl(this.imagens, [
+    this.imagemControl = new FormControl(null, [
       Validators.required,
       // MaxSizeValidator(this.maxSize * 1024)
     ]);
-    this.preencherNovoAnuncio();
+    this.marcaIdControl = new FormControl(null, [
+      Validators.required,
+    ]);
+    this._preencherNovoAnuncio();
   }
 
-  private preencherNovoAnuncio(): void {
+  ngOnInit(): void {
+    this.filteredOptions = this.marcaIdControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value)),
+    );
+  }
+
+  efetuarRegistro(): void {
+    // if (this.formulario.invalid || this.imagemControl.invalid) return;
+    this._preencherNovoAnuncio();
+    console.log(this.novoAnuncio);
+    console.log(this.imagemControl.value);
+    console.log(this.marcaIdControl.value);
+    this._obterMarcaId(this.marcaIdControl.value);
+
+    this.anunciosService.adicionar(this.novoAnuncio, this.imagemControl.value);
+    this._limparFormulario();
+  }
+
+  private _preencherNovoAnuncio(): void {
     this.novoAnuncio = {
       descricao: this.formulario.value.descricao,
       valor: this.formulario.value.valor,
@@ -54,24 +79,25 @@ export class NovoAnuncioComponent {
         ano: this.formulario.value.ano,
         cor: this.formulario.value.cor,
         km: this.formulario.value.km,
-        marcaId: this.formulario.value.marcaId,
+        marcaId: <number>this._obterMarcaId(this.marcaIdControl.value),
         modelo: this.formulario.value.modelo,
       }
     };
   }
 
-  private limparFormulario(): void {
+  private _limparFormulario(): void {
     this.formulario.reset();
     this.imagemControl.reset();
     this.formulario.markAsTouched();
   }
 
-  efetuarRegistro(): void {
-    // if (this.formulario.invalid || this.imagemControl.invalid) return;
-    this.preencherNovoAnuncio();
-    console.log(this.novoAnuncio);
-    console.log(this.imagemControl.value);
-    this.anunciosService.adicionar(this.novoAnuncio, this.imagemControl.value);
-    this.limparFormulario();
+  private _filter(value: string): any[] {
+    const filterValue = value.toLowerCase();
+    return this.options.filter(option => option.nome.toLowerCase().includes(filterValue));
+  }
+
+  private _obterMarcaId(nome: string): number | undefined {
+    nome = this.marcaIdControl.value;
+    return this.options.find(marca => marca.nome === nome)?.id;
   }
 }
