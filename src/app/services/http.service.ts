@@ -6,70 +6,80 @@ import { ELocalStorageKey } from '../enums/ELocalStorageKey';
 
 import { IAnuncio } from '../interfaces/IAnuncio';
 import { ICredenciaisDeAcesso } from '../interfaces/ICredenciaisDeAcesso';
+import { IMarca } from '../interfaces/IMarca';
 import { IUsuario } from '../interfaces/IUsuario';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
-  private token = '';
+  private _url = 'https://pokedex-veiculos.herokuapp.com';
+  private _token = '';
 
   constructor(private http: HttpClient) { }
 
-  private sendAuthorizationToken(): HttpHeaders {
-    this.token = <string>localStorage.getItem(ELocalStorageKey.TOKEN);
-    return new HttpHeaders().set('Authorization', this.token);
-  }
-
   getAnuncios(): Observable<IAnuncio[]> {
-    return this.http.get<IAnuncio[]>('https://pokedex-veiculos.herokuapp.com/anuncios')
+    return this.http.get<IAnuncio[]>(`${this._url}/anuncios`)
       .pipe(
         retry(2),
-        catchError(this.handleError)
+        catchError(this._handleError)
       );
   }
 
   postNovoAnuncio(novoAnuncio: any): Observable<any> {
-    return this.http.post<any>('https://pokedex-veiculos.herokuapp.com/anuncios', novoAnuncio, { headers: this.sendAuthorizationToken() })
+    return this.http.post<any>(`${this._url}/anuncios`, novoAnuncio, { headers: this._sendAuthorizationToken() })
       .pipe(
         retry(2),
-        catchError(this.handleError)
+        catchError(this._handleError)
       );
   }
 
   postImagemNovoAnuncio(file: FormData): Observable<any> {
-    return this.http.post<FormData>('https://pokedex-veiculos.herokuapp.com/anuncios/imagem', file, { headers: this.sendAuthorizationToken() })
+    return this.http.post<FormData>(`${this._url}/anuncios/imagem`, file, { headers: this._sendAuthorizationToken() })
       .pipe(
         retry(2),
-        catchError(this.handleError)
+        catchError(this._handleError)
+      );
+  }
+
+  getMarcas(): Observable<IMarca[]> {
+    return this.http.get<IMarca[]>(`${this._url}/marcas`)
+      .pipe(
+        retry(2),
+        catchError(this._handleError)
       );
   }
 
   postLogin(credenciais: ICredenciaisDeAcesso): Observable<any> {
-    return this.http.post<any>('https://pokedex-veiculos.herokuapp.com/auth', credenciais)
+    return this.http.post<any>(`${this._url}/auth`, credenciais)
       .pipe(
         retry(2),
-        catchError(this.handleError)
+        catchError(this._handleError)
       );
   }
 
   getUsuarios(): Observable<any> {
-    return this.http.get<any>('https://pokedex-veiculos.herokuapp.com/usuarios')
+    return this.http.get<any>(`${this._url}/usuarios`)
       .pipe(
         retry(2),
-        catchError(this.handleError)
+        catchError(this._handleError)
       );
   }
 
   postNovoUsuario(novoUsuario: IUsuario): Observable<any> {
-    return this.http.post<any>('https://pokedex-veiculos.herokuapp.com/usuarios', novoUsuario)
+    return this.http.post<any>(`${this._url}/usuarios`, novoUsuario)
       .pipe(
         retry(2),
-        catchError(this.handleError)
+        catchError(this._handleError)
       );
   }
 
-  private handleError(error: HttpErrorResponse) {
+  private _sendAuthorizationToken(): HttpHeaders {
+    this._token = <string>localStorage.getItem(ELocalStorageKey.TOKEN);
+    return new HttpHeaders().set('Authorization', this._token);
+  }
+
+  private _handleError(error: HttpErrorResponse) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent)// Erro ocorreu no lado do client
       errorMessage = error.error.message;
@@ -77,6 +87,6 @@ export class HttpService {
       errorMessage = `Código do erro: ${error.status}, ` + `menssagem: ${error.message}`;
 
     // console.log(errorMessage);
-    return throwError({status: error.status, mensagem: errorMessage});
+    return throwError({ status: error.status, mensagem: errorMessage });
   }
 }

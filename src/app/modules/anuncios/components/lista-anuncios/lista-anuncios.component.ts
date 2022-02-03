@@ -18,7 +18,7 @@ export class ListaAnunciosComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.anunciosService.listar().subscribe(anuncios => {
+    this.anunciosService.listarAnuncios().subscribe(anuncios => {
       this.listaAnuncios = anuncios;
     },
       () => {

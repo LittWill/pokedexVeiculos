@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
 // import { MaxSizeValidator } from '@angular-material-components/file-input';
 
 import { INovoAnuncio } from 'src/app/interfaces/IAnuncio';
+import { IMarca } from 'src/app/interfaces/IMarca';
 import { AnunciosService } from 'src/app/services/anuncios.service';
 
 @Component({
@@ -27,7 +28,7 @@ export class NovoAnuncioComponent implements OnInit {
   // maxSize = 16;
 
   //mat-autocomplete-config
-  options = [{ id: 4, nome: 'Honda' }, { id: 14, nome: 'Toyota' }];
+  options: IMarca[] = [];
   filteredOptions = new Observable<any[]>();
 
   constructor(
@@ -56,20 +57,37 @@ export class NovoAnuncioComponent implements OnInit {
     this.filteredOptions = this.marcaIdControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value)),
-    );
+
+    )
+    this.anunciosService.listarMarcas().subscribe(marcas => this.options = marcas);
   }
 
   efetuarRegistro(): void {
     // if (this.formulario.invalid || this.imagemControl.invalid) return;
     this._preencherNovoAnuncio();
-    console.log(this.novoAnuncio);
-    console.log(this.imagemControl.value);
+    // console.log(this.novoAnuncio);
+    // console.log(this.imagemControl.value);
     console.log(this.marcaIdControl.value);
-    this._obterMarcaId(this.marcaIdControl.value);
+    
+
+
 
     this.anunciosService.adicionar(this.novoAnuncio, this.imagemControl.value);
     this._limparFormulario();
   }
+
+  // opcaoÉValida(control: AbstractControl): {[key: string]: boolean} | null {
+  //   let temNaLista = false;
+
+  //   this.options.forEach(option => {
+  //     temNaLista = option.nome.includes(control.value);
+  //      if (!temNaLista) return; 
+  //   });
+
+  //   if (!temNaLista) return {'tem': true};
+
+  //   return null;
+  // }
 
   private _preencherNovoAnuncio(): void {
     this.novoAnuncio = {

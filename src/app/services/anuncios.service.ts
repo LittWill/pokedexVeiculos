@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { IAnuncio, INovoAnuncio } from '../interfaces/IAnuncio';
+import { IMarca } from '../interfaces/IMarca';
 import { DialogService } from './dialog.service';
 import { HttpService } from './http.service';
 
@@ -17,8 +18,12 @@ export class AnunciosService {
     private dialog: DialogService
   ) { }
 
-  listar(): Observable<IAnuncio[]> {
+  listarAnuncios(): Observable<IAnuncio[]> {
     return this.httpService.getAnuncios();
+  }
+
+  listarMarcas(): Observable<IMarca[]> {
+    return this.httpService.getMarcas();
   }
 
   adicionar(novoAnuncio: INovoAnuncio, imagemAnuncio: File): void {
@@ -27,16 +32,16 @@ export class AnunciosService {
       formData.append('imagem', imagemAnuncio);
       this.httpService.postImagemNovoAnuncio(formData).subscribe(() => {
         this.router.navigate(['home']);
-        this.exibirMensagemSucesso();
+        this._exibirMensagemSucesso();
       },
-        () => this.exibirMensagemErro()
+        () => this._exibirMensagemErro()
       );
     },
-      () => this.exibirMensagemErro()
+      () => this._exibirMensagemErro()
     );
   };
 
-  private exibirMensagemSucesso(): void {
+  private _exibirMensagemSucesso(): void {
     this.dialog.openDialog(
       {
         titulo: 'Sucesso',
@@ -46,7 +51,7 @@ export class AnunciosService {
     );
   }
 
-  private exibirMensagemErro(): void {
+  private _exibirMensagemErro(): void {
     this.dialog.openDialog(
       {
         titulo: 'Erro',
