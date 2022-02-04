@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import { filter, first, map, startWith } from 'rxjs/operators';
 
 // import { MaxSizeValidator } from '@angular-material-components/file-input';
 
@@ -21,15 +21,17 @@ export class NovoAnuncioComponent implements OnInit {
   marcaIdControl: FormControl;
 
   //ngx_mat_file_input_config 
-  // color: ThemePalette = 'primary',
   disabled = false;
   multiple = false;
   accept = '.png, .jpg, .jpeg';
+  // color: ThemePalette = 'primary',
   // maxSize = 16;
 
   //mat-autocomplete-config
-  options: IMarca[] = [];
-  filteredOptions = new Observable<any[]>();
+  opcoes: IMarca[] = [];
+  opcoesFiltradas = new Observable<any[]>();
+
+  campoÉValido = new Observable<boolean>();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -54,40 +56,33 @@ export class NovoAnuncioComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.filteredOptions = this.marcaIdControl.valueChanges.pipe(
+    this.anunciosService.listarMarcas().subscribe(marcas => this.opcoes = marcas);
+    this.opcoesFiltradas = this.marcaIdControl.valueChanges.pipe(
       startWith(''),
-      map(value => this._filter(value)),
-
-    )
-    this.anunciosService.listarMarcas().subscribe(marcas => this.options = marcas);
+      map(valor => this._filtrar(valor)),
+    );
+    this.marcaIdControl.valueChanges.subscribe(
+      valor => {
+        if (!this._opcaoÉValida(valor)) {
+          this.marcaIdControl.setErrors(Validators.required);
+        }
+      }
+    );
   }
 
   efetuarRegistro(): void {
-    // if (this.formulario.invalid || this.imagemControl.invalid) return;
+    // if (this.formulario.invalid || this.imagemControl.invalid || this.marcaIdControl.invalid) return;
     this._preencherNovoAnuncio();
-    // console.log(this.novoAnuncio);
-    // console.log(this.imagemControl.value);
-    console.log(this.marcaIdControl.value);
-    
-
-
-
     this.anunciosService.adicionar(this.novoAnuncio, this.imagemControl.value);
     this._limparFormulario();
   }
 
-  // opcaoÉValida(control: AbstractControl): {[key: string]: boolean} | null {
-  //   let temNaLista = false;
+  private _opcaoÉValida(valor: string) {
+    let temNaLista = this.opcoes.find(opcao => opcao.nome === valor);
+    if (temNaLista) return true;
 
-  //   this.options.forEach(option => {
-  //     temNaLista = option.nome.includes(control.value);
-  //      if (!temNaLista) return; 
-  //   });
-
-  //   if (!temNaLista) return {'tem': true};
-
-  //   return null;
-  // }
+    return false;
+  }
 
   private _preencherNovoAnuncio(): void {
     this.novoAnuncio = {
@@ -109,13 +104,13 @@ export class NovoAnuncioComponent implements OnInit {
     this.formulario.markAsTouched();
   }
 
-  private _filter(value: string): any[] {
-    const filterValue = value.toLowerCase();
-    return this.options.filter(option => option.nome.toLowerCase().includes(filterValue));
+  private _filtrar(value: string): any[] {
+    const valorFiltrado = value.toLowerCase();
+    return this.opcoes.filter(opcao => opcao.nome.toLowerCase().includes(valorFiltrado));
   }
 
   private _obterMarcaId(nome: string): number | undefined {
     nome = this.marcaIdControl.value;
-    return this.options.find(marca => marca.nome === nome)?.id;
+    return this.opcoes.find(marca => marca.nome === nome)?.id;
   }
 }
