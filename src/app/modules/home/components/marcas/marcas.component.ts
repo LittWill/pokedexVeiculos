@@ -21,7 +21,7 @@ export class MarcasComponent implements OnInit {
       },
       {
         id: 74,
-        imagemLogo: '../../../../../assets/images/chevrolet-logo-home.png',
+        imagemLogo: '../../../../../assets/images/chevrolet-logo-home.jpeg',
         nome: 'Chevrolet',
       },
       {
