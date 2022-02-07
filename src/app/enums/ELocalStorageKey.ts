@@ -2,4 +2,5 @@ export enum ELocalStorageKey {
   USUARIO_LOGADO_INFO = 'USUARIO_LOGADO_INFO',
   TOKEN = 'TOKEN',
   ANUNCIO = 'ANUNCIO',
+  MARCA_ID = 'MARCA_ID',
 }

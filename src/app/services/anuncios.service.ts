@@ -22,6 +22,10 @@ export class AnunciosService {
     return this.httpService.getAnuncios();
   }
 
+  listarAnunciosPorMarca(marcaId: number): Observable<IAnuncio[]> {
+    return this.httpService.getAnunciosPorMarca(marcaId);
+  }
+
   listarMarcas(): Observable<IMarca[]> {
     return this.httpService.getMarcas();
   }
