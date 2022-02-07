@@ -1,6 +1,10 @@
 <h2>Conheça as principais marcas</h2>
-<div class="marcas">
-  <div *ngFor="let marca of marcas" class="marca border-color-primary" (click)="listarVeiculosPorMarca(marca.id)">
-    <img [src]="marca.imagemLogo" alt="imagem do logo">
+<div class="marcas-wrapper">
+  <div class="marcas-box">
+    <div class="marcas">
+      <div *ngFor="let marca of marcas" class="marca border-color-primary" (click)="listarVeiculosPorMarca(marca.id)">
+        <img [src]="marca.imagemLogo" alt="imagem do logo">
+      </div>
+    </div>
   </div>
 </div>
