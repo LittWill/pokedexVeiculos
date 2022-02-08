@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { ELocalStorageKey } from 'src/app/enums/ELocalStorageKey';
 import { IAnuncio } from 'src/app/interfaces/IAnuncio';
@@ -15,12 +16,24 @@ export class ListaAnunciosMarcaComponent implements OnInit {
 
   constructor(
     private anunciosService: AnunciosService,
-    private dialog: DialogService
+    private dialog: DialogService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
     const marcaId = <number><unknown>localStorage.getItem(ELocalStorageKey.MARCA_ID);
     this.anunciosService.listarAnunciosPorMarca(marcaId).subscribe(anuncios => {
+      if (anuncios.length === 0) {
+        this.dialog.openDialog(
+          {
+            titulo: 'Aviso',
+            mensagem: 'Esta marca ainda não possui anúncios.',
+            botaoText: 'Fechar'
+          }
+        );
+        this.router.navigate(['home'])
+        return;
+      }
       this.listaAnuncios = anuncios;
     },
       () => {
