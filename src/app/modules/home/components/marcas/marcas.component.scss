@@ -40,6 +40,8 @@ button {
 
 .marca {
   padding: 5px;
+  margin: 0 24px 0 0;
+  scroll-snap-align: start;
 }
 
 .marca-logo {
@@ -49,7 +51,6 @@ button {
   margin-left: 15px;
   margin-right: 15px;
   border-radius: 50%;
-  scroll-snap-align: start;
 }
 
 .marca-nome {
