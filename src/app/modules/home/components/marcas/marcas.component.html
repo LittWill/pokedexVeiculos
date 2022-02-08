@@ -1,12 +1,12 @@
 <h2>Conheça as principais marcas</h2>
 <div class="marcas-wrapper">
-  <div class="marcas-box">
+  <div class="marcas-box bg-color-primary">
     <button mat-icon-button (click)="voltar()">
       <mat-icon>arrow_back_ios</mat-icon>
     </button>
     <div class="marcas">
       <div class="marca" *ngFor="let marca of marcas">
-        <div class="marca-logo border-color-primary" (click)="listarVeiculosPorMarca(marca.id)">
+        <div class="marca-logo " (click)="listarVeiculosPorMarca(marca.id)">
           <img [src]="marca.imagemLogo" alt="imagem do logo">
         </div>
         <div class="marca-nome">
