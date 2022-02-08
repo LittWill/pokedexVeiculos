@@ -1,10 +1,21 @@
 <h2>Conheça as principais marcas</h2>
 <div class="marcas-wrapper">
   <div class="marcas-box">
+    <button mat-icon-button (click)="voltar()">
+      <mat-icon>arrow_back_ios</mat-icon>
+    </button>
     <div class="marcas">
-      <div *ngFor="let marca of marcas" class="marca border-color-primary" (click)="listarVeiculosPorMarca(marca.id)">
-        <img [src]="marca.imagemLogo" alt="imagem do logo">
+      <div class="marca" *ngFor="let marca of marcas">
+        <div class="marca-logo border-color-primary" (click)="listarVeiculosPorMarca(marca.id)">
+          <img [src]="marca.imagemLogo" alt="imagem do logo">
+        </div>
+        <div class="marca-nome">
+          {{marca.nome}}
+        </div>
       </div>
     </div>
+    <button mat-icon-button (click)="avancar()">
+      <mat-icon>arrow_forward_ios</mat-icon>
+    </button>
   </div>
 </div>

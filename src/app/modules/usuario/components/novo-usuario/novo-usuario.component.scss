@@ -31,7 +31,7 @@ button {
   width: 100%;
 }
 
-@media (min-width: 642px){
+@media only screen and (min-width: 642px){
   .row {
     display: flex;
     flex-direction: row;
