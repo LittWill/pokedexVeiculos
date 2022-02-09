@@ -34,6 +34,14 @@ export class HttpService {
       );
   }
 
+  getAnunciosPorUsuario(): Observable<IAnuncio[]> {
+    return this.http.get<IAnuncio[]>(`${this._url}/anuncios/me`, { headers: this._sendAuthorizationToken() })
+      .pipe(
+        retry(2),
+        catchError(this._handleError)
+      );
+  }
+
   postNovoAnuncio(novoAnuncio: any): Observable<any> {
     return this.http.post<any>(`${this._url}/anuncios`, novoAnuncio, { headers: this._sendAuthorizationToken() })
       .pipe(

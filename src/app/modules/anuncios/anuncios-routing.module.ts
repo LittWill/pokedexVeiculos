@@ -7,11 +7,13 @@ import { DetalhesComponent } from './components/detalhes/detalhes.component';
 import { NovoAnuncioComponent } from './components/novo-anuncio/novo-anuncio.component';
 import { ListaAnunciosComponent } from './components/lista-anuncios/lista-anuncios.component';
 import { ListaAnunciosMarcaComponent } from './components/lista-anuncios-marca/lista-anuncios-marca.component';
+import { ListaAnunciosUsuarioComponent } from './components/lista-anuncios-usuario/lista-anuncios-usuario.component';
 
 const routes: Routes = [
   {path: '', component: AnunciosComponent, children: [
     {path: '', component: ListaAnunciosComponent},
     {path: 'marca', component: ListaAnunciosMarcaComponent},
+    {path: 'usuario', component: ListaAnunciosUsuarioComponent, canActivate: [AuthGuard]},
     {path: 'detalhes', component: DetalhesComponent},
     {path: 'novo-anuncio', component: NovoAnuncioComponent, canActivate: [AuthGuard] },
   ]},

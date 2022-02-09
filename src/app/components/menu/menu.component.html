@@ -31,7 +31,7 @@
       </button>
       <mat-menu #perfil="matMenu">
         <button mat-menu-item [routerLink]="['/']">Perfil</button>
-        <button mat-menu-item [routerLink]="['/']">Meus Anúncios</button>
+        <button mat-menu-item [routerLink]="['anuncios/usuario']">Meus Anúncios</button>
         <button mat-menu-item (click)="encerrarSessao()">Sair</button>
       </mat-menu>
     </ng-template>
