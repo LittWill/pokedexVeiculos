@@ -21,7 +21,6 @@ export class ListaAnunciosUsuarioComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const marcaId = <number><unknown>localStorage.getItem(ELocalStorageKey.MARCA_ID);
     this.anunciosService.listarAnunciosPorUsuario().subscribe(anuncios => {
       if (anuncios.length === 0) {
         this.dialog.openDialog(
