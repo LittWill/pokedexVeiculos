@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 import { IAnuncio, INovoAnuncio } from '../interfaces/IAnuncio';
 import { IMarca } from '../interfaces/IMarca';

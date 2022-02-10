@@ -22,8 +22,6 @@ export class ListaAnunciosFiltroComponent implements OnInit {
 
   ngOnInit(): void {
     const filtro = <string>localStorage.getItem(ELocalStorageKey.PESQUISA);
-    console.log(filtro);
-    
     this.anunciosService.listarAnunciosFiltrados(filtro).subscribe(anuncios => {
       if (anuncios.length === 0) {
         this.dialog.openDialog(

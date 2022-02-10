@@ -14,7 +14,7 @@ export class PesquisaComponent {
 
   constructor(
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
   ) {
     this.formulario = this.formBuilder.group({
       pesquisa: [null]
@@ -24,6 +24,12 @@ export class PesquisaComponent {
   enviarPesquisa(): void {
     const pesquisa = this.formulario.controls.pesquisa.value;
     localStorage.setItem(ELocalStorageKey.PESQUISA, pesquisa);
-    this.router.navigate(['anuncios/filtro']);
+    this._reloadListaDeAnuncios();
+  }
+
+  private _reloadListaDeAnuncios() {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['/anuncios/filtro']);
   }
 }
