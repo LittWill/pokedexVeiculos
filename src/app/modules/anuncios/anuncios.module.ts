@@ -26,6 +26,7 @@ import { AnunciosComponent } from './anuncios.component';
 import { NovoAnuncioComponent } from './components/novo-anuncio/novo-anuncio.component';
 import { ListaAnunciosMarcaComponent } from './components/lista-anuncios-marca/lista-anuncios-marca.component';
 import { ListaAnunciosUsuarioComponent } from './components/lista-anuncios-usuario/lista-anuncios-usuario.component';
+import { ListaAnunciosFiltroComponent } from './components/lista-anuncios-filtro/lista-anuncios-filtro.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
 
@@ -38,6 +39,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     NovoAnuncioComponent,
     ListaAnunciosMarcaComponent,
     ListaAnunciosUsuarioComponent,
+    ListaAnunciosFiltroComponent,
   ],
   imports: [
     CommonModule,

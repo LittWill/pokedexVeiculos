@@ -42,6 +42,14 @@ export class HttpService {
       );
   }
 
+  getAnunciosFiltrados(pesquisa: string): Observable<IAnuncio[]> {
+    return this.http.get<IAnuncio[]>(`${this._url}/anuncios/search?busca=${pesquisa}`)
+      .pipe(
+        retry(2),
+        catchError(this._handleError)
+      );
+  }
+
   postNovoAnuncio(novoAnuncio: any): Observable<any> {
     return this.http.post<any>(`${this._url}/anuncios`, novoAnuncio, { headers: this._sendAuthorizationToken() })
       .pipe(

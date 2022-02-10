@@ -30,6 +30,10 @@ export class AnunciosService {
     return this.httpService.getAnunciosPorUsuario();
   }
 
+  listarAnunciosFiltrados(pesquisa: string): Observable<IAnuncio[]> {
+    return this.httpService.getAnunciosFiltrados(pesquisa);
+  }
+
   listarMarcas(): Observable<IMarca[]> {
     return this.httpService.getMarcas();
   }

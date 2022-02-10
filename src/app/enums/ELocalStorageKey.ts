@@ -3,4 +3,5 @@ export enum ELocalStorageKey {
   TOKEN = 'TOKEN',
   ANUNCIO = 'ANUNCIO',
   MARCA_ID = 'MARCA_ID',
+  PESQUISA = 'PESQUISA',
 }
