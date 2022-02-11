@@ -12,10 +12,10 @@ import { ListaAnunciosFiltroComponent } from './components/lista-anuncios-filtro
 
 const routes: Routes = [
   {path: '', component: AnunciosComponent, children: [
-    {path: '', component: ListaAnunciosComponent},
+    {path: 'todos', component: ListaAnunciosComponent},
     {path: 'marca', component: ListaAnunciosMarcaComponent},
     {path: 'usuario', component: ListaAnunciosUsuarioComponent, canActivate: [AuthGuard]},
-    {path: 'filtro', component: ListaAnunciosFiltroComponent},
+    {path: 'filtro/:pesquisa', component: ListaAnunciosFiltroComponent},
     {path: 'detalhes', component: DetalhesComponent},
     {path: 'novo-anuncio', component: NovoAnuncioComponent, canActivate: [AuthGuard] },
   ]},

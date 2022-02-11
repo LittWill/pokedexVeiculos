@@ -22,7 +22,7 @@ export class DetalhesComponent implements OnInit {
 
   voltar() {
     localStorage.removeItem(ELocalStorageKey.ANUNCIO);
-    this.router.navigate(['anuncios']);
+    this.router.navigate(['anuncios/todos']);
   }
 
   private getLocalStorage(): IAnuncio {

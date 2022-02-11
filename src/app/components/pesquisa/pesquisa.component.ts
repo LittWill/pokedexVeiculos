@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { ELocalStorageKey } from 'src/app/enums/ELocalStorageKey';
 
@@ -13,8 +13,9 @@ export class PesquisaComponent {
   formulario: FormGroup;
 
   constructor(
-    private router: Router,
     private formBuilder: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.formulario = this.formBuilder.group({
       pesquisa: [null]
@@ -23,13 +24,10 @@ export class PesquisaComponent {
 
   enviarPesquisa(): void {
     const pesquisa = this.formulario.controls.pesquisa.value;
-    localStorage.setItem(ELocalStorageKey.PESQUISA, pesquisa);
-    this._reloadListaDeAnuncios();
+    this._reloadListaDeAnuncios(pesquisa);
   }
 
-  private _reloadListaDeAnuncios() {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.router.onSameUrlNavigation = 'reload';
-    this.router.navigate(['/anuncios/filtro']);
+  private _reloadListaDeAnuncios(pesquisa: string) {
+    this.router.navigate(['/anuncios/filtro', pesquisa], {relativeTo: this.route});
   }
 }

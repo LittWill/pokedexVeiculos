@@ -1,7 +1,7 @@
 <nav class="menu bg-color-primary">
   <div class="lado-esquerdo">
     <button mat-button [routerLink]="['/']">Home</button>
-    <button mat-button [routerLink]="['anuncios']">Anúncios</button>
+    <button mat-button [routerLink]="['anuncios/todos']">Anúncios</button>
     <button mat-button [matMenuTriggerFor]="menu">Mais</button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item [routerLink]="['anuncios/novo-anuncio']">Anuncie</button>
