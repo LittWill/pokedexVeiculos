@@ -12,18 +12,14 @@ import { IAnuncio } from 'src/app/interfaces/IAnuncio';
 })
 export class DetalhesEditarComponent implements OnInit {
   anuncio!: IAnuncio;
-  formulario: FormGroup;
+  formulario!: FormGroup;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder
   ) {
-    this.formulario = this.formBuilder.group({
-      descricao: [null, [Validators.required]],
-      preco: [null, [Validators.required,]],
-      km: [null, [Validators.required,]],
-    });
+    
    }
 
   ngOnInit(): void {
@@ -33,6 +29,11 @@ export class DetalhesEditarComponent implements OnInit {
       )
       .subscribe(anuncio => {
         this.anuncio = anuncio;
+        this.formulario = this.formBuilder.group({
+          descricao: [this.anuncio.descricao, [Validators.required]],
+          preco: [this.anuncio.valor, [Validators.required,]],
+          km: [this.anuncio.veiculo.km, [Validators.required,]],
+        });
       },
         () => {
 
