@@ -18,14 +18,11 @@ export class PesquisaComponent {
     this.formulario = this.formBuilder.group({
       pesquisa: ['', [Validators.required, Validators.minLength(2)]],
     });
-    console.log(this.formulario);
-    
   }
 
   enviarPesquisa(): void {
     const pesquisa = this.formulario.controls.pesquisa.value;
     this._reloadListaDeAnuncios(pesquisa);
-    console.log(this.formulario);
   }
 
   private _reloadListaDeAnuncios(pesquisa: string) {
