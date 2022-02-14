@@ -22,6 +22,17 @@
   width: 50px;
 }
 
+.row {
+  display: flex;
+  height: 100px;
+  flex-direction: row;
+  align-items: center;
+}
+
+.input {
+  width: 100%;
+}
+
 @media (min-width: 642px){
   .detalhes-wrapper {
     display: flex;
