@@ -19,8 +19,8 @@ const routes: Routes = [
     {path: 'usuario', component: ListaAnunciosUsuarioComponent, canActivate: [AuthGuard]},
     {path: 'filtro/:pesquisa', component: ListaAnunciosFiltroComponent},
     {path: 'detalhes', component: DetalhesComponent},
-    {path: 'editar/:anuncio', component: AnuncioEditarComponent, canActivate: [AuthGuard]},
-    {path: 'detalhes', component: DetalhesEditarComponent, canActivate: [AuthGuard]},
+    {path: 'meu-anuncio/:anuncio', component: AnuncioEditarComponent, canActivate: [AuthGuard]},
+    {path: 'editar/:anuncio', component: DetalhesEditarComponent, canActivate: [AuthGuard]},
     {path: 'novo-anuncio', component: NovoAnuncioComponent, canActivate: [AuthGuard] },
   ]},
 ];

@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { map } from 'rxjs/operators';
+import { ELocalStorageKey } from 'src/app/enums/ELocalStorageKey';
+
+import { IAnuncio } from 'src/app/interfaces/IAnuncio';
 
 @Component({
-  selector: 'app-anuncio-editar',
+  selector: 'anuncio-editar',
   templateUrl: './anuncio-editar.component.html',
   styleUrls: ['./anuncio-editar.component.scss']
 })
-export class AnuncioEditarComponent implements OnInit {
+export class AnuncioEditarComponent {
+  @Input() anuncio!: IAnuncio;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  ngOnInit(): void {
+  irParaEdicao(anuncio: IAnuncio): void {
+    this.router.navigate(['anuncios/editar', JSON.stringify(anuncio)]);
   }
-
 }

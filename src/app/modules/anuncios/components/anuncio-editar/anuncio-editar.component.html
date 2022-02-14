@@ -1,1 +1,18 @@
-<p>anuncio-editar works!</p>
+<mat-card class="card">
+  <img mat-card-image class="imagem" [src]="anuncio.veiculo.imagem" alt="imagem de carro" (click)="irParaEdicao(anuncio)">
+  <mat-card-header>
+    <div mat-card-avatar><img class="logo" [src]="anuncio.veiculo.marca.imagemLogo" alt="logotipo da marca"></div>
+    
+    <mat-card-title>{{anuncio.valor | currency: 'R$':true:'1.0' }}</mat-card-title>
+    <mat-card-subtitle>{{anuncio.veiculo.ano}} | {{ anuncio.veiculo.km === 0 ? (anuncio.veiculo.km) : (anuncio.veiculo.km | number: '3.0') }}Km</mat-card-subtitle>
+  </mat-card-header>
+<mat-card-content>
+  <p>
+    {{ anuncio.veiculo.marca.nome }} {{ anuncio.veiculo.modelo }}
+  </p>
+</mat-card-content>
+<mat-card-actions>
+  <button mat-raised-button color="primary" (click)="irParaEdicao(anuncio)">Editar</button>
+  <button mat-raised-button>COMPARTILHAR</button>
+</mat-card-actions>
+</mat-card>

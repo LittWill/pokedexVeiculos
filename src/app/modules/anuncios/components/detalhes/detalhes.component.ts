@@ -13,7 +13,7 @@ export class DetalhesComponent implements OnInit {
   anuncio: IAnuncio;
 
   constructor(private router: Router) {
-    this.anuncio = this.getLocalStorage();
+    this.anuncio = this._getLocalStorage();
   }
 
   ngOnInit(): void {
@@ -25,7 +25,7 @@ export class DetalhesComponent implements OnInit {
     this.router.navigate(['anuncios/todos']);
   }
 
-  private getLocalStorage(): IAnuncio {
+  private _getLocalStorage(): IAnuncio {
     return JSON.parse(<string>localStorage.getItem(ELocalStorageKey.ANUNCIO));
   }
 
