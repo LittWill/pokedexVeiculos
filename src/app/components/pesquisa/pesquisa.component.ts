@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-
-import { ELocalStorageKey } from 'src/app/enums/ELocalStorageKey';
 
 @Component({
   selector: 'pesquisa',
@@ -18,13 +16,16 @@ export class PesquisaComponent {
     private route: ActivatedRoute
   ) {
     this.formulario = this.formBuilder.group({
-      pesquisa: [null]
+      pesquisa: ['', [Validators.required, Validators.minLength(2)]],
     });
+    console.log(this.formulario);
+    
   }
 
   enviarPesquisa(): void {
     const pesquisa = this.formulario.controls.pesquisa.value;
     this._reloadListaDeAnuncios(pesquisa);
+    console.log(this.formulario);
   }
 
   private _reloadListaDeAnuncios(pesquisa: string) {
