@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { IAnuncio, INovoAnuncio } from '../interfaces/IAnuncio';
 import { IMarca } from '../interfaces/IMarca';
@@ -44,7 +44,7 @@ export class AnunciosService {
       formData.append('imagem', imagemAnuncio);
       this.httpService.postImagemNovoAnuncio(formData).subscribe(() => {
         this.router.navigate(['home']);
-        this._exibirMensagemSucesso();
+        this._exibirMensagemSucesso('Anúncio adicionado.');
       },
         () => this._exibirMensagemErro()
       );
@@ -53,11 +53,18 @@ export class AnunciosService {
     );
   };
 
-  private _exibirMensagemSucesso(): void {
+  editar(anuncioEditado: INovoAnuncio, id: number): void {
+    this.httpService.putAnuncio(anuncioEditado, id).subscribe(
+      () => this._exibirMensagemSucesso('As alterações foram salvas'),
+      () => this._exibirMensagemErro()
+    );
+  }
+
+  private _exibirMensagemSucesso(mensagem: string): void {
     this.dialog.openDialog(
       {
         titulo: 'Sucesso',
-        mensagem: 'Anúncio adicionado.',
+        mensagem: mensagem,
         botaoText: 'Ok'
       }
     );

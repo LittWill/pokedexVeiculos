@@ -3,6 +3,7 @@ import { IUsuario } from "./IUsuario";
 import { IVeiculo } from "./IVeiculo";
 
 export interface IAnuncio {
+  id: number,
   veiculo: IVeiculo,
   descricao: string,
   valor: number,
@@ -19,7 +20,7 @@ export interface INovoAnuncio {
     ano: number,
     cor: string,
     km: number,
-    marcaId: number,
+    marcaId?: number,
     modelo: string,
   }
 }

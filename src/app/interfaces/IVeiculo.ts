@@ -4,6 +4,7 @@ export interface IVeiculo {
   id: number,
   imagem: string,
   marca: {
+    id: number,
     imagemLogo: string,
     nome: string
   },

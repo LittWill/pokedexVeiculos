@@ -4,7 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { ELocalStorageKey } from '../enums/ELocalStorageKey';
 
-import { IAnuncio } from '../interfaces/IAnuncio';
+import { IAnuncio, INovoAnuncio } from '../interfaces/IAnuncio';
 import { ICredenciaisDeAcesso } from '../interfaces/ICredenciaisDeAcesso';
 import { IMarca } from '../interfaces/IMarca';
 import { IUsuario } from '../interfaces/IUsuario';
@@ -52,6 +52,14 @@ export class HttpService {
 
   postNovoAnuncio(novoAnuncio: any): Observable<any> {
     return this.http.post<any>(`${this._url}/anuncios`, novoAnuncio, { headers: this._sendAuthorizationToken() })
+      .pipe(
+        retry(2),
+        catchError(this._handleError)
+      );
+  }
+
+  putAnuncio(anuncioEditado: INovoAnuncio, id: number): Observable<any> {
+    return this.http.put<INovoAnuncio>(`${this._url}/anuncios/${id}`, anuncioEditado, { headers: this._sendAuthorizationToken() })
       .pipe(
         retry(2),
         catchError(this._handleError)
