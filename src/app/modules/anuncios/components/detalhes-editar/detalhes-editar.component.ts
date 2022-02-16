@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 
 import { IAnuncio, INovoAnuncio } from 'src/app/interfaces/IAnuncio';
 import { AnunciosService } from 'src/app/services/anuncios.service';
+import { DialogService } from 'src/app/services/dialog.service';
 
 @Component({
   selector: 'app-detalhes-editar',
@@ -19,7 +20,8 @@ export class DetalhesEditarComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private anunciosService: AnunciosService
+    private anunciosService: AnunciosService,
+    private dialog: DialogService,
   ) {}
 
   ngOnInit(): void {
@@ -32,7 +34,11 @@ export class DetalhesEditarComponent implements OnInit {
         this._criarFormulario();
       },
         () => {
-
+          this.dialog.openDialog({
+            titulo: 'Erro',
+            mensagem: 'Houve um problema',
+            botaoText: 'Fechar'
+          });
         }
       );
   }

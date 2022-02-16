@@ -55,7 +55,10 @@ export class AnunciosService {
 
   editar(anuncioEditado: INovoAnuncio, id: number): void {
     this.httpService.putAnuncio(anuncioEditado, id).subscribe(
-      () => this._exibirMensagemSucesso('As alterações foram salvas'),
+      () => {
+        this._exibirMensagemSucesso('As alterações foram salvas');
+        this.router.navigate(['anuncios/usuario']);
+      },
       () => this._exibirMensagemErro()
     );
   }
